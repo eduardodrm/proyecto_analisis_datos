@@ -22,7 +22,8 @@ Se documenta en el archivo:
 - Estructura del README alineada al Sprint 1.
 - 3er origen definido como **API REST local** (placeholder) para ETL.
 
-**Pendiente en Sprint 1 (no comprometido aún):** implementación completa del ETL end-to-end (extracción/limpieza/transformación/validación/persistencia final en `/data/`).
+**Estado Sprint 1 (parcial):** se implementa el ETL mínimo para consolidar 3 fuentes en `/data/` (`etl/pipeline_sprint2.py`) y se genera metadata de esquema (`data/dataset_consolidado_sprint2.schema.json`).
+
 
 ### Sprint 2 — Exploración, limpieza y preparación del dataset ✅
 - ETL mínimo para consolidar los 3 orígenes en `data/dataset_consolidado_sprint2.csv`.

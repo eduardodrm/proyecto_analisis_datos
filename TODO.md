@@ -10,52 +10,54 @@
   - [x] Crear diagrama de arquitectura ETL → dataset → modelo → dashboard.
   - [x] Estructurar README con secciones acordes a Sprint 1.
 
-- [ ] ETL automatizado end-to-end (mínimo 3 fuentes)
-  - [ ] Extracción
-    - [ ] CSV `usuarios_streaming.csv`.
-    - [ ] Carga desde `perfil_usuarios.csv` hacia tabla en Postgres.
-    - [x] 3er origen (API REST u otra tabla/CSV) definido y documentado. (API REST local)
+  - [ ] ETL automatizado end-to-end (mínimo 3 fuentes)
+   - [ ] Extracción
+     - [ ] CSV `usuarios_streaming.csv`.
+     - [ ] Carga desde `perfil_usuarios.csv` hacia tabla en Postgres. (persistencia Postgres agregada, falta marcar cierre completo si se valida)
+     - [x] 3er origen (API REST u otra tabla/CSV) definido y documentado. (API REST local)
 
-  - [ ] Transformaciones robustas
-    - [ ] limpieza (nulos, tipos, reglas de rango)
-    - [ ] normalización de formatos
-    - [ ] validación de esquema del dataset final (columnas/tipos/rangos/consistencia)
+   - [ ] Transformaciones robustas
+     - [ ] limpieza (nulos, tipos, reglas de rango)
+     - [ ] normalización de formatos
+     - [ ] validación de esquema del dataset final (columnas/tipos/rangos/consistencia)
 
-  - [ ] Manejo avanzado de errores
-    - [ ] logging profesional (formatos, niveles)
-    - [ ] fallos controlados (reintentos cuando aplique) y trazabilidad
+   - [ ] Manejo avanzado de errores
+     - [ ] logging profesional (formatos, niveles)
+     - [ ] fallos controlados (reintentos cuando aplique) y trazabilidad
 
-  - [ ] Persistencia
-    - [ ] dataset final consolidado en `/data/`
+   - [ ] Persistencia
+     - [x] Persistencia Postgres del dataset consolidado (script `etl/db_loader_sprint1.py` + docs).
+
 
 ---
 ## Sprint 2 — **Exploración, limpieza y preparación del dataset**
-- [ ] EDA (sobre el dataset consolidado)
-  - [ ] Analizar nulos, distribuciones, outliers, escalas.
-  - [ ] Documentar hallazgos y supuestos que afecten preprocesamiento.
+- [x] EDA (sobre el dataset consolidado)
+  - [x] Analizar nulos, distribuciones, outliers, escalas. (docs `eda_inicial_sprint2.md`)
+  - [x] Documentar hallazgos y supuestos que afecten preprocesamiento.
 
-- [ ] Limpieza de datos
-  - [ ] Aplicar reglas deterministas para outliers (capping o eliminación según corresponda).
-  - [ ] Controlar consistencia de unidades y escalas.
-  - [ ] Generar métricas “antes/después”.
+- [x] Limpieza de datos
+  - [x] Aplicar reglas deterministas para outliers (capping o eliminación según corresponda). (capping 1%-99% en `etl/prepare_features_sprint2.py` + `docs/cleaning_report_sprint2.md`)
+  - [x] Controlar consistencia de unidades y escalas. (validación/consistencia vía coerción + rango aproximado por capping; ver report)
+  - [x] Generar métricas “antes/después”. (`docs/cleaning_report_sprint2.md`)
 
-- [ ] Transformación e Ingeniería de Características
-  - [ ] Definir transformaciones necesarias para KMeans.
-  - [ ] Preparar feature pipeline (imputación si aplica, escalamiento/normalización).
-  - [ ] Ingeniería de características (agregados/ratios si aplica al contexto).
-  - [ ] Garantizar que no se usen variables categóricas en el dataset final del modelo.
+- [x] Transformación e Ingeniería de Características
+  - [x] Definir transformaciones necesarias para KMeans. (features numéricas listas)
+  - [x] Preparar feature pipeline (imputación si aplica, escalamiento/normalización). (imputación mediana + fallback 0)
+  - [ ] Ingeniería de características (agregados/ratios si aplica al contexto). (no hay evidencia de nuevos agregados/ratios; se usan variables existentes)
+  - [x] Garantizar que no se usen variables categóricas en el dataset final del modelo. (features sin `user_id`, numéricas)
+
 
 ---
 ## Sprint 3 — **Implementación progresiva (autorizada) Pre-modelado y quality gates (sin entrenar) (avance)**
-- [x] 0) Crear ETL mínimo para consolidar dataset (3 fuentes) en `/data/`.
-- [x] 1) Generar dataset consolidado.
-- [x] 2) Ejecutar EDA inicial (reporte en `/docs/`).
-- [x] 3) Aplicar limpieza determinista + crear dataset de features numéricas para KMeans.
-- [x] 4) Documentar esquema de features en `/docs/`.
-- [x] 5) Actualizar estado en README (en tiempo real al completar bloques).
-- [x] 6) Crear pre-modelado sin entrenar (setup KMeans + range de k).
-- [x] 7) Tests automatizados de validación de features (numérico, sin NaNs).
-- [x] 8) Reporte de ejecución guardado en `/docs/` o `/tests/`. 
+- [x] Crear ETL mínimo para consolidar dataset (3 fuentes) en `/data/`.
+- [x] Generar dataset consolidado.
+- [x] Ejecutar EDA inicial (reporte en `/docs/`).
+- [x] Aplicar limpieza determinista + crear dataset de features numéricas para KMeans.
+- [x] Documentar esquema de features en `/docs/`.
+- [x] Actualizar estado en README (en tiempo real al completar bloques).
+- [x] Crear pre-modelado sin entrenar (setup KMeans + range de k).
+- [x] Tests automatizados de validación de features (numérico, sin NaNs).
+- [x] Reporte de ejecución guardado en `/docs/` o `/tests/`. 
 
 
 ## Sprint 4 — **Entrenamiento KMeans + métricas (codo y silhouette)**
