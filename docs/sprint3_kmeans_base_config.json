@@ -1,0 +1,81 @@
+{
+  "model": "KMeans",
+  "constraint": "Sin entrenamiento en Sprint 3",
+  "features": [
+    "horas_consumo_mensual",
+    "gasto_mensual",
+    "cantidad_contenidos_vistos",
+    "sesiones_semana",
+    "porcentaje_finalizacion",
+    "tiempo_promedio_sesion_min",
+    "cantidad_generos_consumidos",
+    "porcentaje_uso_promociones",
+    "antiguedad_cliente_meses",
+    "edad",
+    "dispositivos_registrados",
+    "porcentaje_uso_app_movil",
+    "cantidad_perfiles_creados",
+    "interacciones_mensuales_soporte",
+    "distancia_promedio_red_km",
+    "extra_metric_a",
+    "extra_metric_b"
+  ],
+  "shape": {
+    "rows": 300,
+    "cols": 17
+  },
+  "random_state": 42,
+  "init": "k-means++",
+  "max_iter": 300,
+  "n_init": 10,
+  "k_range": {
+    "k_min": 2,
+    "k_max": 10,
+    "k_step": 1,
+    "ks": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "quality_gates": {
+    "nan_total": 0,
+    "nan_by_col_top": {
+      "horas_consumo_mensual": 0,
+      "gasto_mensual": 0,
+      "cantidad_contenidos_vistos": 0,
+      "sesiones_semana": 0,
+      "porcentaje_finalizacion": 0,
+      "tiempo_promedio_sesion_min": 0,
+      "cantidad_generos_consumidos": 0,
+      "porcentaje_uso_promociones": 0,
+      "antiguedad_cliente_meses": 0,
+      "edad": 0
+    },
+    "dtypes": {
+      "horas_consumo_mensual": "float64",
+      "gasto_mensual": "float64",
+      "cantidad_contenidos_vistos": "float64",
+      "sesiones_semana": "float64",
+      "porcentaje_finalizacion": "float64",
+      "tiempo_promedio_sesion_min": "float64",
+      "cantidad_generos_consumidos": "float64",
+      "porcentaje_uso_promociones": "float64",
+      "antiguedad_cliente_meses": "float64",
+      "edad": "float64",
+      "dispositivos_registrados": "float64",
+      "porcentaje_uso_app_movil": "float64",
+      "cantidad_perfiles_creados": "float64",
+      "interacciones_mensuales_soporte": "float64",
+      "distancia_promedio_red_km": "float64",
+      "extra_metric_a": "float64",
+      "extra_metric_b": "float64"
+    }
+  }
+}

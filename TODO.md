@@ -48,11 +48,19 @@
 ---
 
 ## Sprint 2 — Implementación progresiva (autorizada)
-0) Crear ETL mínimo para consolidar dataset (3 fuentes) en `/data/`.
-1) Generar dataset consolidado.
-2) Ejecutar EDA inicial (reporte en `/docs/`).
-3) Aplicar limpieza determinista + crear dataset de features numéricas para KMeans.
-4) Documentar esquema de features en `/docs/`.
-5) Actualizar estado en README (en tiempo real al completar bloques).
+0) Crear ETL mínimo para consolidar dataset (3 fuentes) en `/data/`. ✅
+1) Generar dataset consolidado. ✅
+2) Ejecutar EDA inicial (reporte en `/docs/`). ✅
+3) Aplicar limpieza determinista + crear dataset de features numéricas para KMeans. ✅
+4) Documentar esquema de features en `/docs/`. ✅
+5) Actualizar estado en README (en tiempo real al completar bloques). ✅
+
+---
+
+## Sprint 3 — **Pre-modelado y quality gates (sin entrenar) (avance)**
+1) Crear pre-modelado sin entrenar (setup KMeans + range de k). ✅
+2) Tests automatizados de validación de features (numérico, sin NaNs). ✅
+3) Reporte de ejecución guardado en `/docs/` o `/tests/`. ✅
+
 
 

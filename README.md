@@ -17,7 +17,7 @@ Se documenta en el archivo:
 - `docs/architecture_etl_model_dashboard.md`
 
 ## Estado por sprints
-### Sprint 1 — Base técnica y arquitectura ETL ✅
+### Sprint 1 — Base técnica y arquitectura ETL 
 - Diagrama de arquitectura creado.
 - Estructura del README alineada al Sprint 1.
 - 3er origen definido como **API REST local** (placeholder) para ETL.
