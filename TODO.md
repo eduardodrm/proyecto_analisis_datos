@@ -6,15 +6,17 @@
 
 ## Sprint 1 — **Base técnica y arquitectura ETL**
 1) Arquitectura y documentación base
-   - Definir fuentes y su flujo a dataset consolidado (mínimo 3).
-   - Crear diagrama de arquitectura ETL → dataset → modelo → dashboard.
-   - Estructurar README con secciones acordes a Sprint 1.
+   - Definir fuentes y su flujo a dataset consolidado (mínimo 3). ✅
+   - Crear diagrama de arquitectura ETL → dataset → modelo → dashboard. ✅
+   - Estructurar README con secciones acordes a Sprint 1. ✅
+
 
 2) ETL automatizado end-to-end (mínimo 3 fuentes)
    - Extracción:
-     - CSV `usuarios_streaming.csv`.
-     - Carga desde `perfil_usuarios.csv` hacia tabla en Postgres.
-     - 3er origen (API REST u otra tabla/CSV) definido y documentado.
+     - CSV `usuarios_streaming.csv`. ⏳
+     - Carga desde `perfil_usuarios.csv` hacia tabla en Postgres. ⏳
+     - 3er origen (API REST u otra tabla/CSV) definido y documentado. ✅ (API REST local)
+
    - Transformaciones robustas:
      - limpieza (nulos, tipos, reglas de rango),
      - normalización de formatos,
