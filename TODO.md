@@ -4,63 +4,116 @@
 
 ---
 
-## Sprint 1 — **Base técnica y arquitectura ETL**
-1) Arquitectura y documentación base
-   - Definir fuentes y su flujo a dataset consolidado (mínimo 3). ✅
-   - Crear diagrama de arquitectura ETL → dataset → modelo → dashboard. ✅
-   - Estructurar README con secciones acordes a Sprint 1. ✅
+## Sprint 1 — ✅ **Base técnica y arquitectura ETL**
+- [x] Arquitectura y documentación base
+  - [x] Definir fuentes y su flujo a dataset consolidado (mínimo 3).
+  - [x] Crear diagrama de arquitectura ETL → dataset → modelo → dashboard.
+  - [x] Estructurar README con secciones acordes a Sprint 1.
 
+- [ ] ETL automatizado end-to-end (mínimo 3 fuentes)
+  - [ ] Extracción
+    - [ ] CSV `usuarios_streaming.csv`.
+    - [ ] Carga desde `perfil_usuarios.csv` hacia tabla en Postgres.
+    - [x] 3er origen (API REST u otra tabla/CSV) definido y documentado. (API REST local)
 
-2) ETL automatizado end-to-end (mínimo 3 fuentes)
-   - Extracción:
-     - CSV `usuarios_streaming.csv`. ⏳
-     - Carga desde `perfil_usuarios.csv` hacia tabla en Postgres. ⏳
-     - 3er origen (API REST u otra tabla/CSV) definido y documentado. ✅ (API REST local)
+  - [ ] Transformaciones robustas
+    - [ ] limpieza (nulos, tipos, reglas de rango)
+    - [ ] normalización de formatos
+    - [ ] validación de esquema del dataset final (columnas/tipos/rangos/consistencia)
 
-   - Transformaciones robustas:
-     - limpieza (nulos, tipos, reglas de rango),
-     - normalización de formatos,
-     - validación de esquema del dataset final (columnas/tipos/rangos/consistencia).
-   - Manejo avanzado de errores:
-     - logging profesional (formatos, niveles),
-     - fallos controlados (reintentos cuando aplique) y trazabilidad.
-   - Persistencia:
-     - dataset final consolidado en `/data/`.
+  - [ ] Manejo avanzado de errores
+    - [ ] logging profesional (formatos, niveles)
+    - [ ] fallos controlados (reintentos cuando aplique) y trazabilidad
+
+  - [ ] Persistencia
+    - [ ] dataset final consolidado en `/data/`
 
 ---
-
 ## Sprint 2 — **Exploración, limpieza y preparación del dataset**
-1) EDA (sobre el dataset consolidado)
-   - Analizar nulos, distribuciones, outliers, escalas.
-   - Documentar hallazgos y supuestos que afecten preprocesamiento.
+- [ ] EDA (sobre el dataset consolidado)
+  - [ ] Analizar nulos, distribuciones, outliers, escalas.
+  - [ ] Documentar hallazgos y supuestos que afecten preprocesamiento.
 
-2) Limpieza de datos
-   - Aplicar reglas deterministas para outliers (capping o eliminación según corresponda).
-   - Controlar consistencia de unidades y escalas.
-   - Generar métricas “antes/después”.
+- [ ] Limpieza de datos
+  - [ ] Aplicar reglas deterministas para outliers (capping o eliminación según corresponda).
+  - [ ] Controlar consistencia de unidades y escalas.
+  - [ ] Generar métricas “antes/después”.
 
-3) Transformación e Ingeniería de Características
-   - Definir transformaciones necesarias para KMeans.
-   - Preparar feature pipeline (imputación si aplica, escalamiento/normalización).
-   - Ingeniería de características (agregados/ratios si aplica al contexto).
-   - Garantizar que no se usen variables categóricas en el dataset final del modelo.
+- [ ] Transformación e Ingeniería de Características
+  - [ ] Definir transformaciones necesarias para KMeans.
+  - [ ] Preparar feature pipeline (imputación si aplica, escalamiento/normalización).
+  - [ ] Ingeniería de características (agregados/ratios si aplica al contexto).
+  - [ ] Garantizar que no se usen variables categóricas en el dataset final del modelo.
+
+---
+## Sprint 3 — **Implementación progresiva (autorizada) Pre-modelado y quality gates (sin entrenar) (avance)**
+- [x] 0) Crear ETL mínimo para consolidar dataset (3 fuentes) en `/data/`.
+- [x] 1) Generar dataset consolidado.
+- [x] 2) Ejecutar EDA inicial (reporte en `/docs/`).
+- [x] 3) Aplicar limpieza determinista + crear dataset de features numéricas para KMeans.
+- [x] 4) Documentar esquema de features en `/docs/`.
+- [x] 5) Actualizar estado en README (en tiempo real al completar bloques).
+- [x] 6) Crear pre-modelado sin entrenar (setup KMeans + range de k).
+- [x] 7) Tests automatizados de validación de features (numérico, sin NaNs).
+- [x] 8) Reporte de ejecución guardado en `/docs/` o `/tests/`. 
+
+
+## Sprint 4 — **Entrenamiento KMeans + métricas (codo y silhouette)**
+- [ ] Preparar entorno y configuración de entrenamiento (seeds, paths, parámetros base).
+- [ ] Ejecutar KMeans para un rango de k.
+- [ ] Generar gráfico del método del codo (Elbow).
+- [ ] Calcular Silhouette Score para cada k.
+- [ ] Justificar selección del k óptimo (razonamiento + métricas).
 
 ---
 
-## Sprint 2 — Implementación progresiva (autorizada)
-0) Crear ETL mínimo para consolidar dataset (3 fuentes) en `/data/`. ✅
-1) Generar dataset consolidado. ✅
-2) Ejecutar EDA inicial (reporte en `/docs/`). ✅
-3) Aplicar limpieza determinista + crear dataset de features numéricas para KMeans. ✅
-4) Documentar esquema de features en `/docs/`. ✅
-5) Actualizar estado en README (en tiempo real al completar bloques). ✅
+## Sprint 5 — **Entrenamiento final y generación de resultados**
+- [ ] Entrenar KMeans con el k seleccionado.
+- [ ] Asignar cluster a cada usuario y persistir etiquetas.
+- [ ] Guardar artefactos del modelo (si aplica) y outputs en `/data/` o `/repo/`.
+- [ ] Verificar que no existen NaNs en features usadas.
 
 ---
 
-## Sprint 3 — **Pre-modelado y quality gates (sin entrenar) (avance)**
-1) Crear pre-modelado sin entrenar (setup KMeans + range de k). ✅
-2) Tests automatizados de validación de features (numérico, sin NaNs). ✅
-3) Reporte de ejecución guardado en `/docs/` o `/tests/`. ✅
+## Sprint 6 — **Interpretación de segmentos (perfilamiento)**
+- [ ] Calcular para cada cluster: promedios/medianas y métricas clave.
+- [ ] Identificar características principales que diferencian los segmentos.
+- [ ] Redactar interpretación de negocio para cada segmento (texto accionable).
+- [ ] Comparar segmentos entre sí (diferencias relevantes y hallazgos).
 
+---
+
+## Sprint 7 — **Dashboard interactivo (visualización y filtros)**
+- [ ] Implementar dashboard con: tamaño de clusters y distribución porcentual.
+- [ ] Añadir vistas: comparaciones, distribuciones, heatmap/radiales (según aplique).
+- [ ] Añadir interacción: filtros/selección de segmentos y actualización dinámica.
+- [ ] Validar que el dashboard funciona con datos de salida del modelo.
+
+---
+
+## Sprint 8 — **API REST para servir resultados**
+- [ ] Definir contrato de API (endpoints, payloads, ejemplos).
+- [ ] Implementar endpoint(s) para consultar clusters y métricas por segmento.
+- [ ] Integrar autenticación/validaciones mínimas si aplica (según proyecto).
+- [ ] Documentar uso en `/docs/`.
+
+---
+
+## Sprint 9 — **Integración final (ETL + modelo + UI/API)**
+- [ ] Revisar pipeline end-to-end: ingestión → dataset → features → entrenamiento → outputs.
+- [ ] Asegurar trazabilidad (logging y trazas por ejecución).
+- [ ] Ejecutar una corrida completa de extremo a extremo.
+- [ ] Actualizar documentación final (README + docs de ejecución).
+
+---
+
+## Sprint 10 — **Entrega, conclusiones y calidad de repositorio**
+- [ ] Preparar notebook/guía o script de ejecución para replicabilidad.
+- [ ] Evidenciar justificación del k óptimo (codo + silhouette).
+- [ ] Conclusiones orientadas al contexto de negocio.
+- [ ] Revisar estructura del repositorio, tests, y consistencia de documentación.
+
+
+---
 
 
