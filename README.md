@@ -24,3 +24,10 @@ Se documenta en el archivo:
 
 **Pendiente en Sprint 1 (no comprometido aún):** implementación completa del ETL end-to-end (extracción/limpieza/transformación/validación/persistencia final en `/data/`).
 
+### Sprint 2 — Exploración, limpieza y preparación del dataset ✅
+- ETL mínimo para consolidar los 3 orígenes en `data/dataset_consolidado_sprint2.csv`.
+- Dataset de features numéricas aptas para KMeans en `data/features_kmeans_sprint2.csv` (sin NaNs).
+- Reporte de limpieza y esquema en `docs/cleaning_report_sprint2.md` y `docs/features_schema_sprint2.md`.
+- EDA inicial en `docs/eda_inicial_sprint2.md`.
+
+
