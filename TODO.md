@@ -110,10 +110,13 @@
 ---
 
 ## Sprint 9 — **Integración final (ETL + modelo + UI/API)**
-- [ ] Revisar pipeline end-to-end: ingestión → dataset → features → entrenamiento → outputs.
-- [ ] Asegurar trazabilidad (logging y trazas por ejecución).
-- [ ] Ejecutar una corrida completa de extremo a extremo.
+- [x] Revisar pipeline end-to-end: ingestión → dataset → features → entrenamiento → outputs. (scripts identificados)
+- [x] Asegurar trazabilidad (logging y trazas por ejecución). (ETL genera `docs/etl_sprint1_execution_report.json`; se usaron reports de Sprint 5/6)
+- [x] Ejecutar una corrida completa de extremo a extremo.
 - [ ] Actualizar documentación final (README + docs de ejecución).
+
+
+
 
 ---
 

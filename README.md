@@ -17,7 +17,7 @@ Se documenta en el archivo:
 - `docs/architecture_etl_model_dashboard.md`
 
 ## Estado por sprints
-### Sprint 1 — Base técnica y arquitectura ETL 
+### Sprint 1 — Base técnica y arquitectura ETL
 - Diagrama de arquitectura creado.
 - Estructura del README alineada al Sprint 1.
 - 3er origen definido como **API REST local** (placeholder) para ETL.
@@ -42,5 +42,46 @@ Se documenta en el archivo:
 - Reporte de resultados en `docs/sprint4_kmeans_report.md`.
 - Gráfico Elbow: `docs/sprint4_elbow.png` (puede no generarse si `matplotlib` no está disponible en el entorno).
 
+
+### Sprint 5 — Entrenamiento final y generación de resultados ✅
+- Entrenamiento KMeans con el k seleccionado.
+- Persistencia de labels en `data/user_clusters_sprint5.csv`.
+- Persistencia de dataset enriquecido con `cluster` en `data/dataset_consolidado_con_cluster_sprint5.csv`.
+- Modelo serializado en `repo/kmeans_model_sprint5.joblib`.
+
+
+### Sprint 6 — Interpretación de segmentos (perfilamiento) ✅
+- Perfil numérico por cluster y cálculo de drivers.
+- Salida principal: `data/cluster_profile_sprint6.csv`.
+- Reporte: `docs/sprint6_cluster_interpretation.md`.
+
+
+### Sprint 8 — API REST para servir resultados ✅
+- Contrato documentado en `docs/api_results_contract.md`.
+- API implementada en `api/results_api.py`.
+
+### Sprint 9 — Integración final (ETL + modelo + UI/API) ✅
+#### Corrida end-to-end (local)
+> Nota: `api/local_source.py` y `api/results_api.py` usan el mismo puerto **8000**. Se levantan en secuencia.
+
+1) Terminal 1 (origen 3 para ETL):
+- `python api/local_source.py`
+
+2) Terminal 2 (pipeline completo):
+- `python etl/pipeline_sprint2.py`
+- `python etl/prepare_features_sprint2.py`
+- `python etl/train_kmeans_sprint4.py`
+- `python etl/train_kmeans_sprint5.py`
+- `python etl/profile_clusters_sprint6.py`
+
+3) Apagar origen 3 (detener terminal 1).
+
+4) Levantar API de resultados:
+- `python api/results_api.py`
+
+5) Validación (smoke tests):
+- `curl http://localhost:8000/v1/clusters`
+- `curl http://localhost:8000/v1/clusters/0`
+- `curl "http://localhost:8000/v1/metrics?cluster_id=0&stat=mean"`
 
 

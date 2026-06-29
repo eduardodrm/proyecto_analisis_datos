@@ -1,7 +1,7 @@
 # cleaning_report_sprint2
 
-Entrada: C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\data\dataset_consolidado_sprint2.csv
-Salida features: C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\data\features_kmeans_sprint2.csv
+Entrada: C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\data\dataset_consolidado_sprint2.csv
+Salida features: C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\data\features_kmeans_sprint2.csv
 
 ## Resumen
 Shape antes: (300, 18)

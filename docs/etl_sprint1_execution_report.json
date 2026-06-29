@@ -1,12 +1,12 @@
 {
-  "started_at_utc": "2026-06-29T23:03:28.009776+00:00",
+  "started_at_utc": "2026-06-29T23:47:05.094250+00:00",
   "config": {
     "api_base_url": "http://localhost:8000",
     "api_endpoint": "/v1/source/extra_user_metrics",
-    "usuarios_streaming_path": "C:\\Users\\eduar\\Desktop\\proyectoEvaluacion3\\proyecto_analisis_datos\\data\\usuarios_streaming.csv",
-    "perfil_usuarios_path": "C:\\Users\\eduar\\Desktop\\proyectoEvaluacion3\\proyecto_analisis_datos\\data\\perfil_usuarios.csv",
-    "output_csv": "C:\\Users\\eduar\\Desktop\\proyectoEvaluacion3\\proyecto_analisis_datos\\data\\dataset_consolidado_sprint2.csv",
-    "output_schema_json": "C:\\Users\\eduar\\Desktop\\proyectoEvaluacion3\\proyecto_analisis_datos\\data\\dataset_consolidado_sprint2.schema.json",
+    "usuarios_streaming_path": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\usuarios_streaming.csv",
+    "perfil_usuarios_path": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\perfil_usuarios.csv",
+    "output_csv": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\dataset_consolidado_sprint2.csv",
+    "output_schema_json": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\dataset_consolidado_sprint2.schema.json",
     "strict_schema_validation": true
   },
   "stages": {
@@ -19,13 +19,13 @@
       "cols": 7
     },
     "extract_api_extra_user_metrics": {
-      "rows": 3,
+      "rows": 0,
       "cols": 3
     },
     "standardize_user_id": {
       "usuarios_user_id_non_null": 300,
       "perfil_user_id_non_null": 300,
-      "extra_user_id_non_null": 3
+      "extra_user_id_non_null": 0
     },
     "transform_clean_normalize": {
       "rows": 300,
@@ -40,9 +40,9 @@
     }
   },
   "outputs": {
-    "output_csv": "C:\\Users\\eduar\\Desktop\\proyectoEvaluacion3\\proyecto_analisis_datos\\data\\dataset_consolidado_sprint2.csv",
-    "output_schema_json": "C:\\Users\\eduar\\Desktop\\proyectoEvaluacion3\\proyecto_analisis_datos\\data\\dataset_consolidado_sprint2.schema.json"
+    "output_csv": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\dataset_consolidado_sprint2.csv",
+    "output_schema_json": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\dataset_consolidado_sprint2.schema.json"
   },
-  "finished_at_utc": "2026-06-29T23:03:28.072808+00:00",
+  "finished_at_utc": "2026-06-29T23:47:19.774193+00:00",
   "status": "success"
 }
