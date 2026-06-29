@@ -60,6 +60,7 @@ Se documenta en el archivo:
 - Contrato documentado en `docs/api_results_contract.md`.
 - API implementada en `api/results_api.py`.
 
+
 ### Sprint 9 — Integración final (ETL + modelo + UI/API) ✅
 #### Corrida end-to-end (local)
 > Nota: `api/local_source.py` y `api/results_api.py` usan el mismo puerto **8000**. Se levantan en secuencia.
@@ -84,4 +85,10 @@ Se documenta en el archivo:
 - `curl http://localhost:8000/v1/clusters/0`
 - `curl "http://localhost:8000/v1/metrics?cluster_id=0&stat=mean"`
 
+
+### Sprint 10 — **Entrega, conclusiones y calidad de repositorio**
+- [x] Preparar notebook/guía o script de ejecución para replicabilidad. (`docs/sprint10_runbook.md`)
+- [x] Evidenciar justificación del k óptimo (codo + silhouette). (ver `docs/sprint4_kmeans_report.md` y `docs/sprint4_kmeans_metrics.json`)
+- [x] Conclusiones orientadas al contexto de negocio. (`docs/sprint10_conclusiones.md`)
+- [x] Revisar estructura del repositorio, tests, y consistencia de documentación. (tests: `pytest`)
 

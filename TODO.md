@@ -121,8 +121,11 @@
 ---
 
 ## Sprint 10 — **Entrega, conclusiones y calidad de repositorio**
-- [ ] Preparar notebook/guía o script de ejecución para replicabilidad.
-- [ ] Evidenciar justificación del k óptimo (codo + silhouette).
-- [ ] Conclusiones orientadas al contexto de negocio.
-- [ ] Revisar estructura del repositorio, tests, y consistencia de documentación.
+- [x] Preparar notebook/guía o script de ejecución para replicabilidad. (`docs/sprint10_runbook.md`)
+- [x] Evidenciar justificación del k óptimo (codo + silhouette). (`docs/sprint4_kmeans_report.md`)
+- [x] Conclusiones orientadas al contexto de negocio. (`docs/sprint10_conclusiones.md`)
+- [x] Revisar estructura del repositorio, tests, y consistencia de documentación. (tests: `pytest`)
+
+
+
 
