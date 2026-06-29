@@ -21,6 +21,7 @@ import pandas as pd
 from flask import Flask, jsonify, request
 
 
+
 PROJECT_ROOT = __import__("pathlib").Path(__file__).resolve().parents[1]
 DATA_DIR = PROJECT_ROOT / "data"
 
@@ -191,6 +192,25 @@ def create_app() -> Flask:
                 ),
                 404,
             )
+
+    @app.get("/v1/source/extra_user_metrics")
+    def extra_user_metrics():
+        """Origen 3 (placeholder) para el ETL Sprint 2.
+
+        Contrato esperado por ETL:
+        - Retorna una lista JSON de objetos con:
+          - user_id (int)
+          - extra_metric_a (number)
+          - extra_metric_b (number)
+        """
+
+        return jsonify(
+            [
+                {"user_id": 1, "extra_metric_a": 10.0, "extra_metric_b": 0.25},
+                {"user_id": 2, "extra_metric_a": 25.0, "extra_metric_b": 0.10},
+                {"user_id": 3, "extra_metric_a": 5.0, "extra_metric_b": 0.40},
+            ]
+        )
 
     @app.get("/v1/metrics")
     def metrics():
