@@ -21,18 +21,15 @@
       - [x] normalización de formatos
       - [x] validación de esquema del dataset final (columnas/tipos/rangos/consistencia)
 
-
     - [x] Manejo avanzado de errores
       - [x] logging profesional (formatos, niveles)
       - [x] fallos controlados (reintentos cuando aplique) y trazabilidad
 
-
     - [x] Persistencia
       - [x] Persistencia Postgres del dataset consolidado (script `etl/db_loader_sprint1.py` + docs).
 
-
-
 ---
+
 ## Sprint 2 — **Exploración, limpieza y preparación del dataset**
 - [x] EDA (sobre el dataset consolidado)
   - [x] Analizar nulos, distribuciones, outliers, escalas. (docs `eda_inicial_sprint2.md`)
@@ -49,8 +46,8 @@
   - [ ] Ingeniería de características (agregados/ratios si aplica al contexto). (no hay evidencia de nuevos agregados/ratios; se usan variables existentes)
   - [x] Garantizar que no se usen variables categóricas en el dataset final del modelo. (features sin `user_id`, numéricas)
 
-
 ---
+
 ## Sprint 3 — **Implementación progresiva (autorizada) Pre-modelado y quality gates (sin entrenar) (avance)**
 - [x] Crear ETL mínimo para consolidar dataset (3 fuentes) en `/data/`.
 - [x] Generar dataset consolidado.
@@ -60,15 +57,19 @@
 - [x] Actualizar estado en README (en tiempo real al completar bloques).
 - [x] Crear pre-modelado sin entrenar (setup KMeans + range de k).
 - [x] Tests automatizados de validación de features (numérico, sin NaNs).
-- [x] Reporte de ejecución guardado en `/docs/` o `/tests/`. 
+- [x] Reporte de ejecución guardado en `/docs/` o `/tests/`.
 
+---
 
 ## Sprint 4 — **Entrenamiento KMeans + métricas (codo y silhouette)**
-- [ ] Preparar entorno y configuración de entrenamiento (seeds, paths, parámetros base).
-- [ ] Ejecutar KMeans para un rango de k.
-- [ ] Generar gráfico del método del codo (Elbow).
-- [ ] Calcular Silhouette Score para cada k.
-- [ ] Justificar selección del k óptimo (razonamiento + métricas).
+- [x] Preparar entorno y configuración de entrenamiento (seeds, paths, parámetros base).
+- [x] Ejecutar KMeans para un rango de k.
+- [x] Generar gráfico del método del codo (Elbow).
+- [x] Calcular Silhouette Score para cada k.
+- [x] Justificar selección del k óptimo (razonamiento + métricas).
+- [x] Generar artefactos/outputs del Sprint 4 en `/docs/` (métricas + Elbow + reporte).
+
+
 
 ---
 
@@ -117,8 +118,4 @@
 - [ ] Evidenciar justificación del k óptimo (codo + silhouette).
 - [ ] Conclusiones orientadas al contexto de negocio.
 - [ ] Revisar estructura del repositorio, tests, y consistencia de documentación.
-
-
----
-
 

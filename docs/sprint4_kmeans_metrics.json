@@ -1,0 +1,73 @@
+{
+  "k_range": {
+    "k_min": 2,
+    "k_max": 10,
+    "k_step": 1,
+    "ks": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "model_params": {
+    "random_state": 42,
+    "init": "k-means++",
+    "max_iter": 300,
+    "n_init": 10,
+    "standardize": true
+  },
+  "best_k": 3,
+  "metrics": [
+    {
+      "k": 2,
+      "inertia": 3339.6210898367726,
+      "silhouette_score": 0.23050871530406056
+    },
+    {
+      "k": 3,
+      "inertia": 2728.7523620636966,
+      "silhouette_score": 0.23128341862199955
+    },
+    {
+      "k": 4,
+      "inertia": 2613.6964377953295,
+      "silhouette_score": 0.18001336910834628
+    },
+    {
+      "k": 5,
+      "inertia": 2503.1983658782465,
+      "silhouette_score": 0.1264409835776736
+    },
+    {
+      "k": 6,
+      "inertia": 2428.8959291838823,
+      "silhouette_score": 0.094077189604032
+    },
+    {
+      "k": 7,
+      "inertia": 2371.598071165251,
+      "silhouette_score": 0.0929525769900346
+    },
+    {
+      "k": 8,
+      "inertia": 2302.041951845673,
+      "silhouette_score": 0.09434481031833175
+    },
+    {
+      "k": 9,
+      "inertia": 2234.1168745505033,
+      "silhouette_score": 0.09171626644008263
+    },
+    {
+      "k": 10,
+      "inertia": 2186.2108290480755,
+      "silhouette_score": 0.09198467559472455
+    }
+  ]
+}

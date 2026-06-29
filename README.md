@@ -32,3 +32,15 @@ Se documenta en el archivo:
 - EDA inicial en `docs/eda_inicial_sprint2.md`.
 
 
+### Sprint 3 — Pre-modelado (quality gates + configuración base) ✅
+- Quality gates sin entrenamiento: features numéricas y sin NaNs.
+- Configuración base KMeans para Sprint 4 en `docs/sprint3_kmeans_base_config.json`.
+
+### Sprint 4 — Entrenamiento KMeans + métricas (Elbow y Silhouette) ✅
+- Ejecución KMeans para k en rango 2..10.
+- Métricas guardadas en `docs/sprint4_kmeans_metrics.csv` y `docs/sprint4_kmeans_metrics.json`.
+- Reporte de resultados en `docs/sprint4_kmeans_report.md`.
+- Gráfico Elbow: `docs/sprint4_elbow.png` (puede no generarse si `matplotlib` no está disponible en el entorno).
+
+
+
