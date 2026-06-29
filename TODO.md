@@ -90,10 +90,13 @@
 ---
 
 ## Sprint 7 — **Dashboard interactivo (visualización y filtros)**
-- [ ] Implementar dashboard con: tamaño de clusters y distribución porcentual.
-- [ ] Añadir vistas: comparaciones, distribuciones, heatmap/radiales (según aplique).
-- [ ] Añadir interacción: filtros/selección de segmentos y actualización dinámica.
-- [ ] Validar que el dashboard funciona con datos de salida del modelo.
+
+- [x] Implementar dashboard con: tamaño de clusters y distribución porcentual.
+- [x] Añadir vistas: comparaciones, distribuciones, heatmap (matplotlib) y scatter (si hay suficientes features).
+- [x] Añadir interacción: filtros/selección de segmentos y selección dinámica de variables.
+- [x] Validar que el dashboard funciona con datos de salida del modelo (dataset + profile Sprint 6).
+
+
 
 ---
 
