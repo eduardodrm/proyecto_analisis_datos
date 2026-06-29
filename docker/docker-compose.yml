@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  results_api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: e3-results-api
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=production
+    volumes:
+      - ../data:/app/data:ro
+    restart: unless-stopped
+

@@ -101,10 +101,11 @@
 ---
 
 ## Sprint 8 — **API REST para servir resultados**
-- [ ] Definir contrato de API (endpoints, payloads, ejemplos).
-- [ ] Implementar endpoint(s) para consultar clusters y métricas por segmento.
-- [ ] Integrar autenticación/validaciones mínimas si aplica (según proyecto).
-- [ ] Documentar uso en `/docs/`.
+- [x] Definir contrato de API (endpoints, payloads, ejemplos).
+- [x] Implementar endpoint(s) para consultar clusters y métricas por segmento.
+- [x] Integrar autenticación/validaciones mínimas si aplica (según proyecto).
+- [x] Documentar uso en `/docs/`.
+
 
 ---
 
