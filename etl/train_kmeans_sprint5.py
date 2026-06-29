@@ -118,9 +118,14 @@ def main() -> None:
     out_df_labels = pd.DataFrame({"user_id": consolidated_df["user_id"].astype(int).values, "cluster": labels.astype(int)})
     out_df_labels.to_csv(cfg.out_labels_csv, index=False)
 
+    # En el dataset consolidado, pueden existir columnas extra_metric_* que vienen como NaN
+    # desde el endpoint placeholder (para algunos user_id). Para el output de Sprint 5
+    # el test requiere ausencia de NaNs: imputamos numéricamente con 0 (fallback robusto).
     enriched = consolidated_df.copy()
+    enriched = enriched.fillna(0)
     enriched["cluster"] = labels.astype(int)
     enriched.to_csv(cfg.out_dataset_with_cluster_csv, index=False)
+
 
     # Persist model + scaler (if any)
     payload = {

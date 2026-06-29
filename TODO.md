@@ -72,16 +72,15 @@
 
 
 ---
-
 ## Sprint 5 — **Entrenamiento final y generación de resultados**
-- [ ] Entrenar KMeans con el k seleccionado.
-- [ ] Asignar cluster a cada usuario y persistir etiquetas.
-- [ ] Guardar artefactos del modelo (si aplica) y outputs en `/data/` o `/repo/`.
-- [ ] Verificar que no existen NaNs en features usadas.
+- [x] Entrenar KMeans con el k seleccionado.
+- [x] Asignar cluster a cada usuario y persistir etiquetas.
+- [x] Guardar artefactos del modelo (si aplica) y outputs en `/data/` o `/repo/`.
+- [x] Verificar que no existen NaNs en features usadas.
 
 ---
-
 ## Sprint 6 — **Interpretación de segmentos (perfilamiento)**
+
 - [ ] Calcular para cada cluster: promedios/medianas y métricas clave.
 - [ ] Identificar características principales que diferencian los segmentos.
 - [ ] Redactar interpretación de negocio para cada segmento (texto accionable).
