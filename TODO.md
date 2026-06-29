@@ -10,23 +10,26 @@
   - [x] Crear diagrama de arquitectura ETL → dataset → modelo → dashboard.
   - [x] Estructurar README con secciones acordes a Sprint 1.
 
-  - [ ] ETL automatizado end-to-end (mínimo 3 fuentes)
-   - [ ] Extracción
-     - [ ] CSV `usuarios_streaming.csv`.
-     - [ ] Carga desde `perfil_usuarios.csv` hacia tabla en Postgres. (persistencia Postgres agregada, falta marcar cierre completo si se valida)
-     - [x] 3er origen (API REST u otra tabla/CSV) definido y documentado. (API REST local)
+  - [x] ETL automatizado end-to-end (mínimo 3 fuentes)
+    - [x] Extracción
+      - [x] CSV `usuarios_streaming.csv`.
+      - [x] Carga desde `perfil_usuarios.csv` hacia tabla en Postgres. (se consolida desde `etl/pipeline_sprint2.py` y se persiste dataset consolidado en Postgres con `etl/db_loader_sprint1.py`)
+      - [x] 3er origen (API REST u otra tabla/CSV) definido y documentado. (API REST local)
 
-   - [ ] Transformaciones robustas
-     - [ ] limpieza (nulos, tipos, reglas de rango)
-     - [ ] normalización de formatos
-     - [ ] validación de esquema del dataset final (columnas/tipos/rangos/consistencia)
+    - [x] Transformaciones robustas
+      - [x] limpieza (nulos, tipos, reglas de rango)
+      - [x] normalización de formatos
+      - [x] validación de esquema del dataset final (columnas/tipos/rangos/consistencia)
 
-   - [ ] Manejo avanzado de errores
-     - [ ] logging profesional (formatos, niveles)
-     - [ ] fallos controlados (reintentos cuando aplique) y trazabilidad
 
-   - [ ] Persistencia
-     - [x] Persistencia Postgres del dataset consolidado (script `etl/db_loader_sprint1.py` + docs).
+    - [x] Manejo avanzado de errores
+      - [x] logging profesional (formatos, niveles)
+      - [x] fallos controlados (reintentos cuando aplique) y trazabilidad
+
+
+    - [x] Persistencia
+      - [x] Persistencia Postgres del dataset consolidado (script `etl/db_loader_sprint1.py` + docs).
+
 
 
 ---
