@@ -81,10 +81,11 @@
 ---
 ## Sprint 6 — **Interpretación de segmentos (perfilamiento)**
 
-- [ ] Calcular para cada cluster: promedios/medianas y métricas clave.
-- [ ] Identificar características principales que diferencian los segmentos.
-- [ ] Redactar interpretación de negocio para cada segmento (texto accionable).
-- [ ] Comparar segmentos entre sí (diferencias relevantes y hallazgos).
+- [x] Calcular para cada cluster: promedios/medianas y métricas clave.
+- [x] Identificar características principales que diferencian los segmentos.
+- [x] Redactar interpretación de negocio para cada segmento (texto accionable).
+- [x] Comparar segmentos entre sí (diferencias relevantes y hallazgos).
+
 
 ---
 
