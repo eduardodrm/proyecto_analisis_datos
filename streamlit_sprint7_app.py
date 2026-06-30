@@ -24,6 +24,7 @@ from pathlib import Path
 import joblib
 from sklearn.decomposition import PCA
 
+
 # --- Configuración de la página y rutas ---
 st.set_page_config(
     page_title="Dashboard de Segmentación de Usuarios",
@@ -65,25 +66,40 @@ def load_pca_data():
     model_path = REPO_DIR / "kmeans_model_sprint5.joblib"
 
     if not features_path.exists() or not clustered_data_path.exists() or not model_path.exists():
-        return None, None, None, "Faltan archivos necesarios (features, dataset con cluster o modelo)."
+        return None, None, None, "Faltan archivos necesarios."
 
     features_df = pd.read_csv(features_path)
     clustered_df = pd.read_csv(clustered_data_path)
-    
-    if 'user_id' not in features_df.columns or 'user_id' not in clustered_df.columns:
-        return None, None, None, "Los archivos CSV deben contener 'user_id' para un merge seguro."
 
-    merged_df = pd.merge(features_df, clustered_df[['user_id', 'cluster']], on='user_id', how='inner')
-    
-    feature_cols = [col for col in features_df.columns if col != 'user_id']
-    
+    if "user_id" not in features_df.columns or "user_id" not in clustered_df.columns:
+        return None, None, None, "Los archivos CSV deben contener 'user_id'."
+
+    merged_df = pd.merge(
+        features_df,
+        clustered_df[["user_id", "cluster"]],
+        on="user_id",
+        how="inner",
+    )
+
+    bundle = joblib.load(model_path)
+
+    # Recuperar los objetos guardados
+    model = bundle["model"]
+    scaler = bundle["scaler"]
+    feature_cols = bundle["feature_cols"]
+
+    # Preparar los datos
     X = merged_df[feature_cols].values
-    y = merged_df['cluster'].values
-    
-    model = joblib.load(model_path)
+    X = scaler.transform(X)
+
+    y = merged_df["cluster"].values
+
+    # Centroides
     centroids = model.cluster_centers_
-    
+
     return X, y, centroids, None
+    
+
 
 # --- Funciones de visualización ---
 
@@ -144,42 +160,70 @@ def show_segment_comparison(profile_df, clustered_data_df, selected_clusters):
         st.pyplot(fig)
 
 def show_pca_visualization():
-    st.header("4. Visualización de Clusters en 2D (PCA)")
-    X, y, centroids, error = load_pca_data()
+    st.header("4. Visualización de Clusters y Centroides")
 
-    if error:
-        st.error(error)
-        st.warning("No se puede generar el gráfico PCA. Verifique que los archivos existen y son correctos.")
+    clustered_path = DATA_DIR / "dataset_consolidado_con_cluster_sprint5.csv"
+    model_path = REPO_DIR / "kmeans_model_sprint5.joblib"
+
+    if not clustered_path.exists() or not model_path.exists():
+        st.error("No existen los archivos necesarios.")
         return
 
-    try:
-        pca = PCA(n_components=2)
-        X_pca = pca.fit_transform(X)
-        centroids_pca = pca.transform(centroids)
-    except Exception as e:
-        st.error(f"Ocurrió un error durante el cálculo de PCA: {e}")
-        return
+    data = pd.read_csv(clustered_path)
 
-    fig, ax = plt.subplots(figsize=(10, 8))
-    unique_clusters = sorted(pd.Series(y).unique())
-    colors = plt.cm.viridis(np.linspace(0, 1, len(unique_clusters)))
+    bundle = joblib.load(model_path)
 
-    for i, cluster in enumerate(unique_clusters):
-        mask = (y == cluster)
-        ax.scatter(X_pca[mask, 0], X_pca[mask, 1], color=colors[i], label=f'Cluster {cluster}', alpha=0.6)
+    model = bundle["model"]
+    scaler = bundle["scaler"]
+    feature_cols = bundle["feature_cols"]
 
-    ax.scatter(centroids_pca[:, 0], centroids_pca[:, 1], marker='X', s=200, linewidths=3, color='red', label='Centroides', zorder=10)
-    ax.set_title('Visualización de Clusters en 2D (PCA)')
-    ax.set_xlabel('Componente Principal 1 (PC1)')
-    ax.set_ylabel('Componente Principal 2 (PC2)')
-    ax.legend()
-    ax.grid(True)
-    st.pyplot(fig)
-    
+    # Variables a mostrar
+    columna_x = "gasto_mensual"
+    columna_y = "horas_consumo_mensual"
+
+    X = data[feature_cols]
+
+    # Centroides en escala original
+    centroides_original = scaler.inverse_transform(model.cluster_centers_)
+
+    plt.figure(figsize=(10,7))
+
+    plt.scatter(
+        data[columna_x],
+        data[columna_y],
+        c=data["cluster"],
+        cmap="viridis",
+        s=40,
+        alpha=0.7
+    )
+
+    plt.scatter(
+        centroides_original[:, feature_cols.index(columna_x)],
+        centroides_original[:, feature_cols.index(columna_y)],
+        marker="X",
+        s=250,
+        c="red",
+        edgecolor="black",
+        linewidth=2,
+        label="Centroides"
+    )
+
+    plt.xlabel(columna_x)
+    plt.ylabel(columna_y)
+    plt.title("Clusters K-Means (k=3)")
+    plt.grid(True)
+    plt.legend()
+
+    st.pyplot(plt.gcf())
+
     st.markdown("""
-    **Interpretación del gráfico:** Este gráfico proyecta a los usuarios en un espacio de 2D usando PCA para visualizar la separación de los clusters. Cada punto es un usuario, y las 'X' rojas son los centroides de cada cluster.
-    """)
+    **Interpretación**
 
+    - Cada punto representa un usuario.
+    - El color indica el cluster asignado por K-Means.
+    - Las X rojas representan los centroides de cada cluster.
+    """)
+    
 def show_business_interpretation(interpretation_text):
     st.header("5. Interpretación de Negocio por Segmento")
     st.markdown(interpretation_text, unsafe_allow_html=True)
