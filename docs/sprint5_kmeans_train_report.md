@@ -21,6 +21,6 @@
 | 2 | 111 | 37.00 |
 
 ## Archivos generados
-- Labels: `C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\data\user_clusters_sprint5.csv`
-- Dataset enriquecido: `C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\data\dataset_consolidado_con_cluster_sprint5.csv`
-- Modelo (joblib): `C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\repo\kmeans_model_sprint5.joblib`
+- Labels: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\data\user_clusters_sprint5.csv`
+- Dataset enriquecido: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\data\dataset_consolidado_con_cluster_sprint5.csv`
+- Modelo (joblib): `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\repo\kmeans_model_sprint5.joblib`

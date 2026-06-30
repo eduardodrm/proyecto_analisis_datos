@@ -1,6 +1,6 @@
 # Sprint 6 — Interpretación de segmentos (KMeans)
 
-Dataset de entrada: `C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\data\dataset_consolidado_con_cluster_sprint5.csv`
+Dataset de entrada: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\data\dataset_consolidado_con_cluster_sprint5.csv`
 
 ## Resumen por cluster
 

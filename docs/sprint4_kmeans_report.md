@@ -24,9 +24,9 @@
 - Justificación: se elige el k con **mayor silhouette_score** (distancia/estructura de clusters).
 
 ## Elbow
-- Gráfico: `C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\docs\sprint4_elbow.png`
+- Gráfico: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\docs\sprint4_elbow.png`
 
 ## Archivos generados
-- Métricas CSV: `C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\docs\sprint4_kmeans_metrics.csv`
-- Métricas JSON: `C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\docs\sprint4_kmeans_metrics.json`
-- Reporte MD: `C:\Users\diego\OneDrive\Escritorio\Programacion Cdd\proyecto_analisis_datos\docs\sprint4_kmeans_report.md`
+- Métricas CSV: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\docs\sprint4_kmeans_metrics.csv`
+- Métricas JSON: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\docs\sprint4_kmeans_metrics.json`
+- Reporte MD: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\docs\sprint4_kmeans_report.md`

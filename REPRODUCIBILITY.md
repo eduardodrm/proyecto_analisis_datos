@@ -98,3 +98,9 @@ Revisa:
 - Este proyecto usa `matplotlib` en varios reportes; si el entorno no genera PNG, se mantiene el JSON/CSV como evidencia.
 - El dashboard intenta trabajar con `dataset_consolidado_con_cluster_sprint5.csv` y `cluster_profile_sprint6.csv`.
 
+
+## 9 Visualizacion Dashboard (Uno por uno)
+- python -m venv .venv
+- \.venv\Scripts\Activate.ps1
+- python api/results_api.py
+- python -m streamlit run dashboards/streamlit_sprint7_app.py
