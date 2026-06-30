@@ -7,5 +7,11 @@ numpy>=1.26.0
 psycopg2-binary>=2.9.9
 joblib>=1.4.2
 
+# Dashboard + visualización
+streamlit>=1.35.0
+seaborn>=0.13.2
+matplotlib>=3.9.0
+
+
 
 

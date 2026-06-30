@@ -4,9 +4,13 @@ Este runbook documenta cómo reproducir el pipeline end-to-end de segmentación 
 
 > Supuestos: se trabaja desde la raíz del repo `proyecto_analisis_datos/`.
 
+
 ## 0) Prerrequisitos
 - Python 3.x
 - Dependencias: `pip install -r requirements.txt`
+
+> Recomendado: usar entorno virtual para reproducibilidad.
+
 
 ## 1) Origen 3 (API REST local)
 Levantar el servicio que provee datos para el ETL.
@@ -17,9 +21,10 @@ python api/local_source.py
 ```
 
 - El servicio usa el puerto **8000**.
+</new_str
 
 ## 2) Pipeline ETL + modelo + artefactos
-En otra terminal:
+En otra terminal (ejecutar en este orden):
 ```bash
 python etl/pipeline_sprint2.py
 python etl/prepare_features_sprint2.py
@@ -27,6 +32,7 @@ python etl/train_kmeans_sprint4.py
 python etl/train_kmeans_sprint5.py
 python etl/profile_clusters_sprint6.py
 ```
+
 
 ## 3) Detener origen 3
 Cuando termine el pipeline, apagar el proceso de la terminal 1.

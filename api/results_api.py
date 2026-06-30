@@ -4,6 +4,8 @@ Endpoints:
 - GET /v1/clusters
 - GET /v1/clusters/<cluster_id>
 - GET /v1/metrics?cluster_id=...&stat=mean|median
+- GET /v1/dashboard
+
 
 Fuente principal de métricas:
 - data/cluster_profile_sprint6.csv
@@ -11,6 +13,7 @@ Fuente principal de métricas:
 Conteos/porcentajes:
 - data/user_clusters_sprint5.csv (fallback)
 """
+
 
 from __future__ import annotations
 
@@ -212,8 +215,17 @@ def create_app() -> Flask:
             ]
         )
 
+    @app.get("/v1/dashboard")
+    @app.get("/v1/dashboard/")
+    def dashboard():
+        """Ruta de UI para explorar los resultados (Streamlit)."""
+        return ("Streamlit dashboard: abre http://localhost:8501", 200, {"Content-Type": "text/plain"})
+
+
+
     @app.get("/v1/metrics")
     def metrics():
+
         cluster_id = request.args.get("cluster_id", type=str)
         stat = request.args.get("stat", default="mean", type=str)
 
