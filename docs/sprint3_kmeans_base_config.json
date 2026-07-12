@@ -16,13 +16,11 @@
     "porcentaje_uso_app_movil",
     "cantidad_perfiles_creados",
     "interacciones_mensuales_soporte",
-    "distancia_promedio_red_km",
-    "extra_metric_a",
-    "extra_metric_b"
+    "distancia_promedio_red_km"
   ],
   "shape": {
     "rows": 300,
-    "cols": 17
+    "cols": 15
   },
   "random_state": 42,
   "init": "k-means++",
@@ -73,9 +71,7 @@
       "porcentaje_uso_app_movil": "float64",
       "cantidad_perfiles_creados": "float64",
       "interacciones_mensuales_soporte": "float64",
-      "distancia_promedio_red_km": "float64",
-      "extra_metric_a": "float64",
-      "extra_metric_b": "float64"
+      "distancia_promedio_red_km": "float64"
     }
   }
 }

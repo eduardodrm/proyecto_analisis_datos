@@ -1,6 +1,6 @@
 # features_kmeans_sprint2.csv - Esquema
 
-Columnas: 17
+Columnas: 15
 
 | columna | dtype | min | max | missing |
 |---|---|---:|---:|---:|
@@ -19,5 +19,3 @@ Columnas: 17
 | cantidad_perfiles_creados | float64 | 1.000000 | 5.000000 | 0 |
 | interacciones_mensuales_soporte | float64 | 0.000000 | 7.000000 | 0 |
 | distancia_promedio_red_km | float64 | 2.097000 | 79.800000 | 0 |
-| extra_metric_a | float64 | 0.000000 | 0.000000 | 0 |
-| extra_metric_b | float64 | 0.000000 | 0.000000 | 0 |

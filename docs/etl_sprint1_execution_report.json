@@ -1,8 +1,8 @@
 {
-  "started_at_utc": "2026-07-12T06:13:46.012006+00:00",
+  "started_at_utc": "2026-07-12T08:11:10.246603+00:00",
   "config": {
-    "api_base_url": "",
-    "api_endpoint": "",
+    "api_base_url": null,
+    "api_endpoint": null,
     "usuarios_streaming_path": "C:\\Users\\Avywenna\\Desktop\\Study\\EV3\\data\\usuarios_streaming.csv",
     "perfil_usuarios_path": "C:\\Users\\Avywenna\\Desktop\\Study\\EV3\\data\\perfil_usuarios.csv",
     "output_csv": "C:\\Users\\Avywenna\\Desktop\\Study\\EV3\\data\\dataset_consolidado_sprint2.csv",
@@ -38,6 +38,6 @@
     "output_csv": "C:\\Users\\Avywenna\\Desktop\\Study\\EV3\\data\\dataset_consolidado_sprint2.csv",
     "output_schema_json": "C:\\Users\\Avywenna\\Desktop\\Study\\EV3\\data\\dataset_consolidado_sprint2.schema.json"
   },
-  "finished_at_utc": "2026-07-12T06:13:46.050993+00:00",
+  "finished_at_utc": "2026-07-12T08:11:10.290525+00:00",
   "status": "success"
 }

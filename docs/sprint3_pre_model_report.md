@@ -1,10 +1,10 @@
 # Sprint 3 — Pre-modelado (KMeans, sin entrenamiento)
 
-Features CSV: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\data\features_kmeans_sprint2.csv`
+Features CSV: `C:\Users\Avywenna\Desktop\Study\EV3\data\features_kmeans_sprint2.csv`
 
 ## Shape
 - Filas: 300
-- Columnas: 17
+- Columnas: 15
 
 ## Quality gates
 - Total NaNs: 0
@@ -24,8 +24,6 @@ Features CSV: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_dato
   - cantidad_perfiles_creados: float64
   - interacciones_mensuales_soporte: float64
   - distancia_promedio_red_km: float64
-  - extra_metric_a: float64
-  - extra_metric_b: float64
 
 ## Configuración base de KMeans (para Sprint 4)
 - random_state: 42

@@ -6,7 +6,7 @@ Objetivo (Sprint 3):
 - Guardar reporte de esquema y configuración base del modelo
 
 Uso:
-  py etl/pre_model_sprint3.py
+  python etl/pre_model_sprint3.py
 
 Salida:
   docs/sprint3_pre_model_report.md

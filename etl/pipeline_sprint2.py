@@ -1,12 +1,11 @@
 """ETL mínimo para habilitar Sprint 2.
 
 Objetivo:
-- Consolidar 3 fuentes en un dataset único apto para EDA/cleaning/features.
+- Consolidar 2 fuentes en un dataset único apto para EDA/cleaning/features.
 
 Fuentes:
 - data/usuarios_streaming.csv
 - data/perfil_usuarios.csv
-- API REST local: GET /v1/source/extra_user_metrics (ver api/local_source.py)
 
 Notas:
 - Este script está diseñado para ejecutarse localmente y ser reproducible.
@@ -32,7 +31,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
-import requests
+
 
 
 
@@ -52,11 +51,6 @@ class ETLConfig:
 
     usuarios_streaming_path: Path = DATA_DIR / "usuarios_streaming.csv"
     perfil_usuarios_path: Path = DATA_DIR / "perfil_usuarios.csv"
-
-    # API REST (origen 3) eliminado: ahora solo se consolidan 2 CSV.
-    api_base_url: str = ""
-    api_endpoint: str = ""
-
 
     output_csv: Path = DATA_DIR / "dataset_consolidado_sprint2.csv"
     output_schema_json: Path = DATA_DIR / "dataset_consolidado_sprint2.schema.json"
@@ -80,43 +74,11 @@ def _init_logger(level: str) -> logging.Logger:
     return logger
 
 
-def _http_get_json_with_retries(
-    logger: logging.Logger,
-    url: str,
-    timeout_seconds: int,
-    retries: int,
-    backoff_seconds: float,
-) -> Any:
-
-    last_exc: Optional[Exception] = None
-    for i in range(retries):
-        try:
-            resp = requests.get(url, timeout=timeout_seconds)
-            resp.raise_for_status()
-            return resp.json()
-        except Exception as e:  # noqa: BLE001
-            last_exc = e
-            if i < retries - 1:
-                time.sleep(backoff_seconds * (2**i))
-    assert last_exc is not None
-    raise last_exc
-
-
 def load_csv(path: Path) -> pd.DataFrame:
+
     if not path.exists():
         raise FileNotFoundError(f"No existe el archivo requerido: {path}")
     return pd.read_csv(path)
-
-
-def fetch_extra_metrics(cfg: ETLConfig, logger: logging.Logger) -> pd.DataFrame:
-    """Eliminado (origen 3 ya no aplica).
-
-    Mantener la firma para compatibilidad, pero retorna un DataFrame vacío.
-    """
-    _ = (cfg, logger)
-    return pd.DataFrame([{"user_id": 0}]).head(0)
-
-
 
 
 def standardize_user_id(df: pd.DataFrame, user_id_col_candidates: List[str]) -> pd.DataFrame:
@@ -227,8 +189,8 @@ def main() -> None:
     report: Dict[str, Any] = {
         "started_at_utc": run_started_at,
         "config": {
-            "api_base_url": cfg.api_base_url,
-            "api_endpoint": cfg.api_endpoint,
+            "api_base_url": os.getenv("API_BASE_URL"),
+            "api_endpoint": os.getenv("API_ENDPOINT"),
             "usuarios_streaming_path": str(cfg.usuarios_streaming_path),
             "perfil_usuarios_path": str(cfg.perfil_usuarios_path),
             "output_csv": str(cfg.output_csv),
@@ -246,8 +208,6 @@ def main() -> None:
         perfil_df = load_csv(cfg.perfil_usuarios_path)
         report["stages"]["extract_perfil_usuarios"] = {"rows": int(len(perfil_df)), "cols": int(len(perfil_df.columns))}
         logger.info("Extracción perfil_usuarios.csv OK")
-
-        # Origen 3 eliminado: no se extrae nada adicional.
 
         usuarios_df = standardize_user_id(usuarios_df, ["user_id", "id", "usuario_id", "id_cliente"])
         perfil_df = standardize_user_id(perfil_df, ["user_id", "id", "usuario_id", "id_cliente"])

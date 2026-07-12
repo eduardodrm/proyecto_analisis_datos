@@ -65,9 +65,9 @@ def pick_numeric_features(df: pd.DataFrame, exclude: set[str]) -> list[str]:
 
 
 def main() -> None:
-    st.set_page_config(page_title="E3 Segmentación — Dashboard (Sprint 11)", layout="wide")
+    st.set_page_config(page_title="Dashboard - E3 Segmentación de usuarios", layout="wide")
 
-    st.title("E3 Segmentación de usuarios — KMeans (Dashboard Sprint 11)")
+    st.title("E3 Segmentación de usuarios — KMeans")
 
     st.markdown(
 
@@ -124,12 +124,15 @@ def main() -> None:
     # Perfilamiento por segmento
     # ==========================
     st.subheader("Perfilamiento por segmento")
+
     if selected_clusters:
         st_profile = profile[profile["cluster"].isin(selected_clusters)]
     else:
         st_profile = profile
 
+    # Tabla potencialmente ancha: usar contenedor desplazable horizontalmente.
     st.dataframe(st_profile, use_container_width=True, hide_index=True)
+
 
     # ==============================
     # Comparación entre clusters
@@ -209,7 +212,8 @@ def main() -> None:
     # ==============================
     # Sprint 11: PCA / Elbow-Silhouette / Radar
     # ==============================
-    st.subheader("Sprint 11 — PCA, Elbow/Silhouette y radar")
+
+    st.subheader("PCA, Elbow/Silhouette y radar")
 
     # -----------
     # PCA (2D)
@@ -371,7 +375,7 @@ def main() -> None:
     # ==============================
     # Lectura de negocio (Sprint 6)
     # ==============================
-    st.subheader("Lectura de negocio (Sprint 6)")
+
     report_path = DOCS_DIR / "sprint6_cluster_interpretation.md"
     if report_path.exists():
         st.markdown(report_path.read_text(encoding="utf-8"))

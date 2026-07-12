@@ -2,7 +2,7 @@
 
 ## Configuración
 - k_range: 2..10 (step 1)
-- features: 17 columnas
+- features: 15 columnas
 - standardize: True
 
 ## Métricas por k
@@ -24,9 +24,9 @@
 - Justificación: se elige el k con **mayor silhouette_score** (distancia/estructura de clusters).
 
 ## Elbow
-- Gráfico: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\docs\sprint4_elbow.png`
+- Gráfico: `C:\Users\Avywenna\Desktop\Study\EV3\docs\sprint4_elbow.png`
 
 ## Archivos generados
-- Métricas CSV: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\docs\sprint4_kmeans_metrics.csv`
-- Métricas JSON: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\docs\sprint4_kmeans_metrics.json`
-- Reporte MD: `C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\docs\sprint4_kmeans_report.md`
+- Métricas CSV: `C:\Users\Avywenna\Desktop\Study\EV3\docs\sprint4_kmeans_metrics.csv`
+- Métricas JSON: `C:\Users\Avywenna\Desktop\Study\EV3\docs\sprint4_kmeans_metrics.json`
+- Reporte MD: `C:\Users\Avywenna\Desktop\Study\EV3\docs\sprint4_kmeans_report.md`

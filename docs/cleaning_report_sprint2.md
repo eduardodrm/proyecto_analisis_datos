@@ -1,31 +1,31 @@
 # cleaning_report_sprint2
 
-Entrada: C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\data\dataset_consolidado_sprint2.csv
-Salida features: C:\Users\eduar\Desktop\proyectoEvaluacion3\proyecto_analisis_datos\data\features_kmeans_sprint2.csv
+Entrada: C:\Users\Avywenna\Desktop\Study\EV3\data\dataset_consolidado_sprint2.csv
+Salida features: C:\Users\Avywenna\Desktop\Study\EV3\data\features_kmeans_sprint2.csv
 
 ## Resumen
-Shape antes: (300, 18)
-Shape features: (300, 17)
+Shape antes: (300, 16)
+Shape features: (300, 15)
 
 ## Nulos antes (top 15)
 
-|                             |   0 |
-|:----------------------------|----:|
-| extra_metric_a              |   1 |
-| extra_metric_b              |   1 |
-| horas_consumo_mensual       |   0 |
-| user_id                     |   0 |
-| gasto_mensual               |   0 |
-| cantidad_contenidos_vistos  |   0 |
-| tiempo_promedio_sesion_min  |   0 |
-| cantidad_generos_consumidos |   0 |
-| sesiones_semana             |   0 |
-| porcentaje_finalizacion     |   0 |
-| antiguedad_cliente_meses    |   0 |
-| porcentaje_uso_promociones  |   0 |
-| edad                        |   0 |
-| dispositivos_registrados    |   0 |
-| cantidad_perfiles_creados   |   0 |
+|                                 |   0 |
+|:--------------------------------|----:|
+| user_id                         |   0 |
+| horas_consumo_mensual           |   0 |
+| gasto_mensual                   |   0 |
+| cantidad_contenidos_vistos      |   0 |
+| sesiones_semana                 |   0 |
+| porcentaje_finalizacion         |   0 |
+| tiempo_promedio_sesion_min      |   0 |
+| cantidad_generos_consumidos     |   0 |
+| porcentaje_uso_promociones      |   0 |
+| antiguedad_cliente_meses        |   0 |
+| edad                            |   0 |
+| dispositivos_registrados        |   0 |
+| porcentaje_uso_app_movil        |   0 |
+| cantidad_perfiles_creados       |   0 |
+| interacciones_mensuales_soporte |   0 |
 
 ## Nulos después (features)
 
@@ -48,7 +48,7 @@ Shape features: (300, 17)
 | distancia_promedio_red_km       |   0 |
 
 ## Outliers capados (1% - 99%)
-- Columnas capadas: 17
+- Columnas capadas: 15
 
 | columna | cap_low | cap_high |
 |---|---:|---:|
@@ -64,7 +64,7 @@ Shape features: (300, 17)
 | edad | 18.000000 | 69.000000 |
 
 ## Imputación (mediana)
-- Columnas imputadas: 17
+- Columnas imputadas: 15
 
 | columna | median |
 |---|---:|

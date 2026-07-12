@@ -16,7 +16,7 @@ Tareas incluidas:
    - docs/features_schema_sprint2.md
 
 Uso:
-  py etl/prepare_features_sprint2.py
+  python etl/prepare_features_sprint2.py
 """
 
 from __future__ import annotations

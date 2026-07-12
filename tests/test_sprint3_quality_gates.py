@@ -18,7 +18,7 @@ def test_features_shape_and_no_nans() -> None:
     df = pd.read_csv(FEATURES_CSV)
     # Según Sprint 2 (estado actual del repo)
     assert df.shape[0] == 300
-    assert df.shape[1] == 17
+    assert df.shape[1] == 15
 
     # NaNs
     assert int(df.isna().sum().sum()) == 0
