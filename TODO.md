@@ -142,9 +142,10 @@
 ---
 
 ## Sprint 12 — **Aprendizaje supervisado (predicción de cluster)**
-- [ ] Definir target supervisado (recomendado: predecir `cluster` generado por KMeans en `data/user_clusters_sprint5.csv`).
-- [ ] Construir dataset supervisado: `X` = features numéricas (del archivo `data/features_kmeans_sprint2.csv`) y `y` = `cluster`.
-- [ ] Split train/val (estratificado por cluster).
+- [x] Definir target supervisado (recomendado: predecir `cluster` generado por KMeans en `data/user_clusters_sprint5.csv`).
+- [x] Construir dataset supervisado: `X` = features numéricas (del archivo `data/features_kmeans_sprint2.csv`) y `y` = `cluster`. (script `etl/supervised_dataset_sprint12.py`)
+- [x] Split train/val (estratificado por cluster). (script `etl/supervised_dataset_sprint12.py`)
+
 
 ---
 

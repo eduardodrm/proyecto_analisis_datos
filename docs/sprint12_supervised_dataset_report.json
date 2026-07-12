@@ -1,0 +1,30 @@
+{
+  "features_path": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\features_kmeans_sprint2.csv",
+  "clusters_path": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\user_clusters_sprint5.csv",
+  "n_samples_total": 300,
+  "n_features": 15,
+  "test_size": 0.2,
+  "random_state": 42,
+  "train": {
+    "n": 240,
+    "y_distribution": {
+      "0": 0.25416666666666665,
+      "1": 0.375,
+      "2": 0.37083333333333335
+    }
+  },
+  "val": {
+    "n": 60,
+    "y_distribution": {
+      "0": 0.26666666666666666,
+      "1": 0.36666666666666664,
+      "2": 0.36666666666666664
+    }
+  },
+  "saved_files": {
+    "X_train": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\supervised_X_train_sprint12.csv",
+    "X_val": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\supervised_X_val_sprint12.csv",
+    "y_train": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\supervised_y_train_sprint12.csv",
+    "y_val": "C:\\Users\\diego\\OneDrive\\Escritorio\\Programacion Cdd\\proyecto_analisis_datos\\data\\supervised_y_val_sprint12.csv"
+  }
+}
