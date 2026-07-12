@@ -129,18 +129,32 @@
 ---
 
 ## Sprint 11 — Dashboard ampliado (PCA + Elbow/Silhouette + radar) e integración endpoint
-- [ ] Actualizar `dashboards/streamlit_sprint7_app.py`:
+- [x] Actualizar `dashboards/streamlit_sprint7_app.py`:
 
-  - [ ] Agregar PCA (2 componentes) y gráfico interactivo por cluster.
+  - [x] Agregar PCA (2 componentes) y gráfico interactivo por cluster.
 
-  - [ ] Agregar sección “Elbow y Silhouette” usando `docs/sprint4_kmeans_metrics.json` (y `docs/sprint4_elbow.png` si existe).
-  - [ ] Agregar gráfico radial (radar chart) para comparar perfiles.
-  - [ ] Agregar toggles: `mean/median` y selector “Top N variables”.
-- [ ] Actualizar `api/results_api.py`:
-  - [ ] Implementar `GET /v1/dashboard` (redirigir a la UI del dashboard).
-- [ ] Smoke tests:
-  - [ ] `curl http://localhost:8000/v1/clusters`
-  - [ ] `curl -L http://localhost:8000/v1/dashboard`
+  - [x] Agregar sección “Elbow y Silhouette” usando `docs/sprint4_kmeans_metrics.json` (y `docs/sprint4_elbow.png` si existe).
+
+  - [x] Agregar gráfico radial (radar chart) para comparar perfiles.
+
+  - [x] Agregar toggles: `mean/median` y selector “Top N variables”.
+- [x] Actualizar `api/results_api.py`:
+  - [x] Implementar `GET /v1/dashboard` (redirigir a la UI del dashboard).
+- [x] Smoke tests:
+  - [x] `curl http://localhost:8000/v1/clusters`
+  - [x] `curl -L http://localhost:8000/v1/dashboard`
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

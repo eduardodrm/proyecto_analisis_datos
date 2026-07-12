@@ -218,8 +218,12 @@ def create_app() -> Flask:
     @app.get("/v1/dashboard")
     @app.get("/v1/dashboard/")
     def dashboard():
-        """Ruta de UI para explorar los resultados (Streamlit)."""
-        return ("Streamlit dashboard: abre http://localhost:8501", 200, {"Content-Type": "text/plain"})
+        """Ruta de UI para explorar los resultados (Streamlit).
+
+        Redirige a la UI Streamlit en http://localhost:8501.
+        """
+        return ("", 302, {"Location": "http://localhost:8501"})
+
 
 
 
