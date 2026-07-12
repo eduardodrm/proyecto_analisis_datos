@@ -12,18 +12,17 @@ Este runbook documenta cómo reproducir el pipeline end-to-end de segmentación 
 > Recomendado: usar entorno virtual para reproducibilidad.
 
 
-## 1) Origen 3 (API REST local)
-Levantar el servicio que provee datos para el ETL.
-
-En una terminal:
+## 1) Pipeline ETL + modelo + artefactos
+En una terminal (ejecutar en este orden):
 ```bash
-python api/local_source.py
+python etl/pipeline_sprint2.py
+python etl/prepare_features_sprint2.py
+python etl/train_kmeans_sprint4.py
+python etl/train_kmeans_sprint5.py
+python etl/profile_clusters_sprint6.py
 ```
 
-- El servicio usa el puerto **8000**.
-</new_str
-
-## 2) Pipeline ETL + modelo + artefactos
+## 2) API REST de resultados (segmentos y métricas)
 En otra terminal (ejecutar en este orden):
 ```bash
 python etl/pipeline_sprint2.py

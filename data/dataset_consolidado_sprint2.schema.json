@@ -112,20 +112,6 @@
       "null": 0,
       "min": 1.4,
       "max": 79.9
-    },
-    "extra_metric_a": {
-      "dtype": "float64",
-      "non_null": 0,
-      "null": 300,
-      "min": null,
-      "max": null
-    },
-    "extra_metric_b": {
-      "dtype": "float64",
-      "non_null": 0,
-      "null": 300,
-      "min": null,
-      "max": null
     }
   }
 }

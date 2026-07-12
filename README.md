@@ -6,23 +6,24 @@
 Construir un pipeline end-to-end para **segmentar usuarios** usando aprendizaje no supervisado con **KMeans**, integrando datos desde múltiples fuentes, dejando un ETL robusto y exponiendo resultados vía **dashboard interactivo** y **API REST**.
 
 ## Fuentes de datos (Sprint 1)
-El proyecto integra al menos 3 fuentes (mínimo requerido por evaluación):
+El proyecto integra **solo 2 fuentes**:
 
 1. **CSV (consumo)**: `data/usuarios_streaming.csv`
-2. **CSV (perfil)**: `data/perfil_usuarios.csv` (se cargará en Postgres en sprints siguientes)
-3. **API REST local (3er origen)**: endpoint definido localmente para permitir ETL sin servicios externos
+2. **CSV (perfil)**: `data/perfil_usuarios.csv`
+
 
 ## Arquitectura (ETL → Dataset → Modelo → Dashboard) (Sprint 1)
 Se documenta en el archivo:
 - `docs/architecture_etl_model_dashboard.md`
 
+
 ## Estado por sprints
 ### Sprint 1 — Base técnica y arquitectura ETL
 - Diagrama de arquitectura creado.
 - Estructura del README alineada al Sprint 1.
-- 3er origen definido como **API REST local** (placeholder) para ETL.
 
-**Estado Sprint 1 (parcial):** se implementa el ETL mínimo para consolidar 3 fuentes en `/data/` (`etl/pipeline_sprint2.py`) y se genera metadata de esquema (`data/dataset_consolidado_sprint2.schema.json`).
+**Estado Sprint 1 (parcial):** se implementa el ETL mínimo para consolidar **2 fuentes** en `/data/` (`etl/pipeline_sprint2.py`) y se genera metadata de esquema (`data/dataset_consolidado_sprint2.schema.json`).
+
 
 
 ### Sprint 2 — Exploración, limpieza y preparación del dataset ✅
@@ -63,24 +64,18 @@ Se documenta en el archivo:
 
 ### Sprint 9 — Integración final (ETL + modelo + UI/API) ✅
 #### Corrida end-to-end (local)
-> Nota: `api/local_source.py` y `api/results_api.py` usan el mismo puerto **8000**. Se levantan en secuencia.
 
-1) Terminal 1 (origen 3 para ETL):
-- `python api/local_source.py`
-
-2) Terminal 2 (pipeline completo):
+1) Terminal 1 (pipeline completo):
 - `python etl/pipeline_sprint2.py`
 - `python etl/prepare_features_sprint2.py`
 - `python etl/train_kmeans_sprint4.py`
 - `python etl/train_kmeans_sprint5.py`
 - `python etl/profile_clusters_sprint6.py`
 
-3) Apagar origen 3 (detener terminal 1).
-
-4) Levantar API de resultados:
+2) Terminal 2 (API de resultados):
 - `python api/results_api.py`
 
-5) Validación (smoke tests):
+3) Validación (smoke tests):
 - `curl http://localhost:8000/v1/clusters`
 - `curl http://localhost:8000/v1/clusters/0`
 - `curl "http://localhost:8000/v1/metrics?cluster_id=0&stat=mean"`

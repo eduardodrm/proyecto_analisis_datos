@@ -14,7 +14,7 @@
     - [x] Extracción
       - [x] CSV `usuarios_streaming.csv`.
       - [x] CSV `perfil_usuarios.csv`.
-      - [ ] Eliminación del **3er origen** (API REST placeholder) del pipeline.
+      - [x] Eliminación del **3er origen** (API REST placeholder) del pipeline.
 
     - [x] Transformaciones robustas
       - [x] limpieza (nulos, tipos, reglas de rango)
@@ -49,7 +49,7 @@
 ---
 
 ## Sprint 3 — **Implementación progresiva (autorizada) Pre-modelado y quality gates (sin entrenar) (avance)**
-- [ ] Crear ETL mínimo para consolidar dataset (2 fuentes) en `/data/` (eliminar 3er origen del pipeline).
+- [x] Crear ETL mínimo para consolidar dataset (2 fuentes) en `/data/` (eliminar 3er origen del pipeline).
 - [x] Generar dataset consolidado.
 - [x] Ejecutar EDA inicial (reporte en `/docs/`).
 - [x] Aplicar limpieza determinista + crear dataset de features numéricas para KMeans.
@@ -109,7 +109,7 @@
 - [x] Revisar pipeline end-to-end: ingestión → dataset → features → entrenamiento → outputs. (scripts identificados)
 - [x] Asegurar trazabilidad (logging y trazas por ejecución). (ETL genera `docs/etl_sprint1_execution_report.json`; se usaron reports de Sprint 5/6)
 - [x] Ejecutar una corrida completa de extremo a extremo.
-- [ ] Actualizar documentación final (README + docs de ejecución).
+- [x] Actualizar documentación final (README + docs de ejecución).
 
 ---
 

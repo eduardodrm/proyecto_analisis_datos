@@ -53,8 +53,10 @@ class ETLConfig:
     usuarios_streaming_path: Path = DATA_DIR / "usuarios_streaming.csv"
     perfil_usuarios_path: Path = DATA_DIR / "perfil_usuarios.csv"
 
-    api_base_url: str = "http://localhost:8000"
-    api_endpoint: str = "/v1/source/extra_user_metrics"
+    # API REST (origen 3) eliminado: ahora solo se consolidan 2 CSV.
+    api_base_url: str = ""
+    api_endpoint: str = ""
+
 
     output_csv: Path = DATA_DIR / "dataset_consolidado_sprint2.csv"
     output_schema_json: Path = DATA_DIR / "dataset_consolidado_sprint2.schema.json"
@@ -107,27 +109,13 @@ def load_csv(path: Path) -> pd.DataFrame:
 
 
 def fetch_extra_metrics(cfg: ETLConfig, logger: logging.Logger) -> pd.DataFrame:
-    """Fetch de métricas extra desde el origen 3 (API local).
+    """Eliminado (origen 3 ya no aplica).
 
-    Sprint 1 (robustez): si la API falla, devolvemos un DataFrame vacío con columnas esperadas.
+    Mantener la firma para compatibilidad, pero retorna un DataFrame vacío.
     """
-    url = f"{cfg.api_base_url}{cfg.api_endpoint}"
-    try:
-        payload = _http_get_json_with_retries(
-            logger,
-            url,
-            timeout_seconds=cfg.http_timeout_seconds,
-            retries=cfg.http_retries,
-            backoff_seconds=cfg.http_retry_backoff_seconds,
-        )
+    _ = (cfg, logger)
+    return pd.DataFrame([{"user_id": 0}]).head(0)
 
-        if not isinstance(payload, list):
-            raise ValueError("El payload del endpoint debe ser una lista de objetos")
-        return pd.DataFrame(payload)
-    except Exception as e:  # noqa: BLE001
-        logger.warning(f"Origen 3 (API) falló; usando payload vacío. Error: {type(e).__name__}: {e}")
-        # Columnas conocidas del contrato (docs/api_local_source_contract.md)
-        return pd.DataFrame([{"user_id": 1, "extra_metric_a": 0.0, "extra_metric_b": 0.0}]).head(0)
 
 
 
@@ -259,26 +247,23 @@ def main() -> None:
         report["stages"]["extract_perfil_usuarios"] = {"rows": int(len(perfil_df)), "cols": int(len(perfil_df.columns))}
         logger.info("Extracción perfil_usuarios.csv OK")
 
-        extra_df = fetch_extra_metrics(cfg, logger)
-        report["stages"]["extract_api_extra_user_metrics"] = {"rows": int(len(extra_df)), "cols": int(len(extra_df.columns))}
-        logger.info("Extracción API REST local OK")
+        # Origen 3 eliminado: no se extrae nada adicional.
 
         usuarios_df = standardize_user_id(usuarios_df, ["user_id", "id", "usuario_id", "id_cliente"])
         perfil_df = standardize_user_id(perfil_df, ["user_id", "id", "usuario_id", "id_cliente"])
-        extra_df = standardize_user_id(extra_df, ["user_id", "id", "usuario_id", "id_cliente"])
+
 
         report["stages"]["standardize_user_id"] = {
             "usuarios_user_id_non_null": int(usuarios_df["user_id"].notna().sum()),
             "perfil_user_id_non_null": int(perfil_df["user_id"].notna().sum()),
-            "extra_user_id_non_null": int(extra_df["user_id"].notna().sum()),
         }
 
-        # Consolidación: join por user_id
+        # Consolidación: join por user_id (solo 2 fuentes)
         # - left join desde usuarios_streaming para conservar comportamiento de consumo.
         df = usuarios_df.merge(
             perfil_df, on="user_id", how="left", suffixes=("_consumo", "_perfil")
         )
-        df = df.merge(extra_df, on="user_id", how="left")
+
 
 
         # Transformaciones/validación (paso 2: robustez)
