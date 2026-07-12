@@ -1,20 +1,20 @@
-# TODO (Sprints por bloques + nombres) — E3 Segmentación no supervisada (KMeans)
+# TODO (Sprints por bloques + nombres) — E3 Segmentación (KMeans) + Supervisado
 
 > Regla clave: README “en tiempo real” → refleja solo lo ya completado en cada commit.
 
 ---
 
-## Sprint 1 — ✅ **Base técnica y arquitectura ETL**
+## Sprint 1 — ✅ **Base técnica y arquitectura ETL (2 fuentes)**
 - [x] Arquitectura y documentación base
-  - [x] Definir fuentes y su flujo a dataset consolidado (mínimo 3).
+  - [x] Definir fuentes y su flujo a dataset consolidado (**2 fuentes**).
   - [x] Crear diagrama de arquitectura ETL → dataset → modelo → dashboard.
   - [x] Estructurar README con secciones acordes a Sprint 1.
 
-  - [x] ETL automatizado end-to-end (mínimo 3 fuentes)
+  - [x] ETL automatizado end-to-end (**2 fuentes**)
     - [x] Extracción
       - [x] CSV `usuarios_streaming.csv`.
-      - [x] Carga desde `perfil_usuarios.csv` hacia tabla en Postgres. (se consolida desde `etl/pipeline_sprint2.py` y se persiste dataset consolidado en Postgres con `etl/db_loader_sprint1.py`)
-      - [x] 3er origen (API REST u otra tabla/CSV) definido y documentado. (API REST local)
+      - [x] CSV `perfil_usuarios.csv`.
+      - [ ] Eliminación del **3er origen** (API REST placeholder) del pipeline.
 
     - [x] Transformaciones robustas
       - [x] limpieza (nulos, tipos, reglas de rango)
@@ -26,7 +26,7 @@
       - [x] fallos controlados (reintentos cuando aplique) y trazabilidad
 
     - [x] Persistencia
-      - [x] Persistencia Postgres del dataset consolidado (script `etl/db_loader_sprint1.py` + docs).
+      - [x] Persistencia de dataset consolidado en `/data/` (script `etl/pipeline_sprint2.py`).
 
 ---
 
@@ -49,7 +49,7 @@
 ---
 
 ## Sprint 3 — **Implementación progresiva (autorizada) Pre-modelado y quality gates (sin entrenar) (avance)**
-- [x] Crear ETL mínimo para consolidar dataset (3 fuentes) en `/data/`.
+- [ ] Crear ETL mínimo para consolidar dataset (2 fuentes) en `/data/` (eliminar 3er origen del pipeline).
 - [x] Generar dataset consolidado.
 - [x] Ejecutar EDA inicial (reporte en `/docs/`).
 - [x] Aplicar limpieza determinista + crear dataset de features numéricas para KMeans.
@@ -69,9 +69,8 @@
 - [x] Justificar selección del k óptimo (razonamiento + métricas).
 - [x] Generar artefactos/outputs del Sprint 4 en `/docs/` (métricas + Elbow + reporte).
 
-
-
 ---
+
 ## Sprint 5 — **Entrenamiento final y generación de resultados**
 - [x] Entrenar KMeans con el k seleccionado.
 - [x] Asignar cluster a cada usuario y persistir etiquetas.
@@ -79,13 +78,13 @@
 - [x] Verificar que no existen NaNs en features usadas.
 
 ---
+
 ## Sprint 6 — **Interpretación de segmentos (perfilamiento)**
 
 - [x] Calcular para cada cluster: promedios/medianas y métricas clave.
 - [x] Identificar características principales que diferencian los segmentos.
 - [x] Redactar interpretación de negocio para cada segmento (texto accionable).
 - [x] Comparar segmentos entre sí (diferencias relevantes y hallazgos).
-
 
 ---
 
@@ -96,8 +95,6 @@
 - [x] Añadir interacción: filtros/selección de segmentos y selección dinámica de variables.
 - [x] Validar que el dashboard funciona con datos de salida del modelo (dataset + profile Sprint 6).
 
-
-
 ---
 
 ## Sprint 8 — **API REST para servir resultados**
@@ -106,7 +103,6 @@
 - [x] Integrar autenticación/validaciones mínimas si aplica (según proyecto).
 - [x] Documentar uso en `/docs/`.
 
-
 ---
 
 ## Sprint 9 — **Integración final (ETL + modelo + UI/API)**
@@ -114,9 +110,6 @@
 - [x] Asegurar trazabilidad (logging y trazas por ejecución). (ETL genera `docs/etl_sprint1_execution_report.json`; se usaron reports de Sprint 5/6)
 - [x] Ejecutar una corrida completa de extremo a extremo.
 - [ ] Actualizar documentación final (README + docs de ejecución).
-
-
-
 
 ---
 
@@ -128,7 +121,7 @@
 
 ---
 
-## Sprint 11 — Dashboard ampliado (PCA + Elbow/Silhouette + radar) e integración endpoint
+## Sprint 11 — Dashboard ampliado (PCA, Elbow/Silhouette, radar) + endpoint de UI
 - [x] Actualizar `dashboards/streamlit_sprint7_app.py`:
 
   - [x] Agregar PCA (2 componentes) y gráfico interactivo por cluster.
@@ -138,25 +131,31 @@
   - [x] Agregar gráfico radial (radar chart) para comparar perfiles.
 
   - [x] Agregar toggles: `mean/median` y selector “Top N variables”.
+
 - [x] Actualizar `api/results_api.py`:
   - [x] Implementar `GET /v1/dashboard` (redirigir a la UI del dashboard).
+
 - [x] Smoke tests:
   - [x] `curl http://localhost:8000/v1/clusters`
   - [x] `curl -L http://localhost:8000/v1/dashboard`
 
+---
 
+## Sprint 12 — **Aprendizaje supervisado (predicción de cluster)**
+- [ ] Definir target supervisado (recomendado: predecir `cluster` generado por KMeans en `data/user_clusters_sprint5.csv`).
+- [ ] Construir dataset supervisado: `X` = features numéricas (del archivo `data/features_kmeans_sprint2.csv`) y `y` = `cluster`.
+- [ ] Split train/val (estratificado por cluster).
 
+---
 
+## Sprint 13 — **Modelos supervisados + tuning y métricas**
+- [ ] Entrenar al menos 2 algoritmos supervisados (ej.: RandomForestClassifier + LogisticRegression) con baseline.
+- [ ] Tuning con GridSearchCV/RandomizedSearchCV (en train).
+- [ ] Métricas de clasificación por negocio (ej.: accuracy, F1-macro, matriz de confusión).
+- [ ] Guardar reportes en `/docs/` y modelos en `/repo/`.
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
+## Sprint 14 — **Integración de resultados supervisados (API/UI) + CI hooks**
+- [ ] Actualizar contrato/documentación de API para exponer métricas del modelo supervisado.
+- [ ] Smoke tests y/o tests unitarios para asegurar que el dataset supervisado no tiene NaNs y que el modelo supera un mínimo razonable de F1-macro.
