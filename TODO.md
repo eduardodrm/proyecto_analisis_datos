@@ -159,5 +159,6 @@
 ---
 
 ## Sprint 14 — **Integración de resultados supervisados (API/UI) + CI hooks**
-- [ ] Actualizar contrato/documentación de API para exponer métricas del modelo supervisado.
-- [ ] Smoke tests y/o tests unitarios para asegurar que el dataset supervisado no tiene NaNs y que el modelo supera un mínimo razonable de F1-macro.
+- [x] Actualizar contrato/documentación de API para exponer métricas del modelo supervisado.
+- [x] Smoke tests y/o tests unitarios para asegurar que el dataset supervisado no tiene NaNs y que el modelo supera un mínimo razonable de F1-macro.
+
