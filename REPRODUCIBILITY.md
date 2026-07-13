@@ -4,6 +4,7 @@ Guía para que cualquier persona pueda ejecutar el pipeline y levantar el dashbo
 
 > Directorio de trabajo esperado: la raíz del repo `proyecto_analisis_datos/`.
 
+
 ---
 
 ## 1) Prerrequisitos
@@ -98,4 +99,3 @@ Revisa:
 ---
 
 > Nota: Para despliegue local (sin Docker) y con Docker Compose, ver `docs/guia_despliegue.md`. Para uso de UI/API por parte de usuarios, ver `docs/manual_usuario.md`.
-

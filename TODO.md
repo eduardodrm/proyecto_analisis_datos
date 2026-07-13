@@ -1,7 +1,5 @@
 # TODO (Sprints por bloques + nombres) — E3 Segmentación (KMeans) + Supervisado
 
-> Regla clave: README “en tiempo real” → refleja solo lo ya completado en cada commit.
-
 ---
 
 ## Sprint 1 — ✅ **Base técnica y arquitectura ETL (2 fuentes)**
@@ -14,7 +12,8 @@
     - [x] Extracción
       - [x] CSV `usuarios_streaming.csv`.
       - [x] CSV `perfil_usuarios.csv`.
-      - [x] Eliminación del **3er origen** (API REST placeholder) del pipeline.
+
+
 
     - [x] Transformaciones robustas
       - [x] limpieza (nulos, tipos, reglas de rango)
@@ -146,7 +145,6 @@
 - [x] Construir dataset supervisado: `X` = features numéricas (del archivo `data/features_kmeans_sprint2.csv`) y `y` = `cluster`. (script `etl/supervised_dataset_sprint12.py`)
 - [x] Split train/val (estratificado por cluster). (script `etl/supervised_dataset_sprint12.py`)
 
-
 ---
 
 ## Sprint 13 — **Modelos supervisados + tuning y métricas**
@@ -155,10 +153,8 @@
 - [x] Métricas de clasificación por negocio (ej.: accuracy, F1-macro, matriz de confusión).
 - [x] Guardar reportes en `/docs/` y modelos en `/repo/`.
 
-
 ---
 
 ## Sprint 14 — **Integración de resultados supervisados (API/UI) + CI hooks**
 - [x] Actualizar contrato/documentación de API para exponer métricas del modelo supervisado.
 - [x] Smoke tests y/o tests unitarios para asegurar que el dataset supervisado no tiene NaNs y que el modelo supera un mínimo razonable de F1-macro.
-

@@ -20,7 +20,7 @@ Del dataset consolidado se identifican variables típicas para segmentación KMe
 - soporte/red: `interacciones_mensuales_soporte`, `distancia_promedio_red_km`
 
 ## 4) Observación para preprocesamiento
-Como las variables del origen 3 (`extra_metric_*`) vienen completamente nulas, se trata en el pipeline de features con imputación (y fallback a 0) para que el dataset final de KMeans no tenga NaNs.
+Las variables `extra_metric_*` ya no forman parte del pipeline tras eliminar el “origen 3”.
 
 ---
 
