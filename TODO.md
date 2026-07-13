@@ -150,10 +150,11 @@
 ---
 
 ## Sprint 13 — **Modelos supervisados + tuning y métricas**
-- [ ] Entrenar al menos 2 algoritmos supervisados (ej.: RandomForestClassifier + LogisticRegression) con baseline.
-- [ ] Tuning con GridSearchCV/RandomizedSearchCV (en train).
-- [ ] Métricas de clasificación por negocio (ej.: accuracy, F1-macro, matriz de confusión).
-- [ ] Guardar reportes en `/docs/` y modelos en `/repo/`.
+- [x] Entrenar al menos 2 algoritmos supervisados (ej.: RandomForestClassifier + LogisticRegression) con baseline.
+- [x] Tuning con GridSearchCV/RandomizedSearchCV (en train).
+- [x] Métricas de clasificación por negocio (ej.: accuracy, F1-macro, matriz de confusión).
+- [x] Guardar reportes en `/docs/` y modelos en `/repo/`.
+
 
 ---
 
