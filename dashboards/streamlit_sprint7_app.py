@@ -382,8 +382,86 @@ def main() -> None:
     else:
         st.info("No se encontró el reporte de Sprint 6 para mostrar la interpretación.")
 
+    # ==============================
+    # Aprendizaje supervisado (Sprint 12/13)
+    # ==============================
+    st.divider()
+    st.subheader("Aprendizaje supervisado (Sprint 12/13)")
+    
+    # Dataset (Sprint 12)
+    st.markdown("### Sprint 12 — Dataset supervisado")
+    sprint12_report_path = DOCS_DIR / "sprint12_supervised_dataset_report.json"
+    if sprint12_report_path.exists():
+        sprint12_report = load_metrics_json(sprint12_report_path)  # reutiliza loader JSON
+        df_metrics = pd.DataFrame(
+            [{"propiedad": k, "valor": v} for k, v in {
+                "n_samples_total": sprint12_report.get("n_samples_total"),
+                "n_features": sprint12_report.get("n_features"),
+                "test_size": sprint12_report.get("test_size"),
+                "random_state": sprint12_report.get("random_state"),
+            }.items()]
+        )
+        st.dataframe(df_metrics, use_container_width=True, hide_index=True)
+
+        train_dist = sprint12_report.get("train", {}).get("y_distribution", {})
+        val_dist = sprint12_report.get("val", {}).get("y_distribution", {})
+        if train_dist and val_dist:
+            c1, c2 = st.columns(2)
+            with c1:
+                st.dataframe(pd.DataFrame({"clase": list(train_dist.keys()), "proporcion": list(train_dist.values())}), use_container_width=True)
+            with c2:
+                st.dataframe(pd.DataFrame({"clase": list(val_dist.keys()), "proporcion": list(val_dist.values())}), use_container_width=True)
+    else:
+        st.info("No se encontró docs/sprint12_supervised_dataset_report.json")
+
+    # Modelos (Sprint 13)
+    st.markdown("### Sprint 13 — Modelos supervisados")
+    sprint13_report_path = DOCS_DIR / "sprint13_supervised_train_report.json"
+    if sprint13_report_path.exists():
+        sprint13_report = load_metrics_json(sprint13_report_path)
+        models = sprint13_report.get("models", {})
+        if not models:
+            st.info("El reporte de Sprint 13 no contiene la clave 'models'.")
+        else:
+            model_keys = list(models.keys())
+            selected_model = st.selectbox("Modelo", options=model_keys, index=0)
+            selected_split = st.radio("Split", options=["baseline", "tuned"], horizontal=True, index=1)
+
+            model_obj = models[selected_model][selected_split]
+            metrics = model_obj.get("metrics", {})
+
+            mdf = pd.DataFrame([{"métrica": k, "valor": metrics[k]} for k in ["accuracy", "f1_macro"] if k in metrics])
+            if not mdf.empty:
+                st.dataframe(mdf, use_container_width=True, hide_index=True)
+
+            # Confusion matrix PNG
+            cm_png = model_obj.get("confusion_matrix_png")
+            if cm_png and Path(cm_png).exists():
+                st.image(str(cm_png), use_container_width=True, caption="Matriz de confusión (PNG)")
+
+            # Confusion matrix tabla
+            cm_obj = model_obj.get("confusion_matrix")
+            labels = None
+            if isinstance(cm_obj, dict):
+                labels = cm_obj.get("labels")
+                cm = cm_obj.get("confusion_matrix")
+            else:
+                cm = cm_obj
+
+            if isinstance(cm, list) and cm and isinstance(cm[0], list):
+                if labels is None:
+                    labels = list(range(len(cm)))
+                cm_df = pd.DataFrame(cm, index=[str(x) for x in labels], columns=[str(x) for x in labels])
+                st.dataframe(cm_df, use_container_width=True)
+
+    else:
+        st.info("No se encontró docs/sprint13_supervised_train_report.json")
+
 
 if __name__ == "__main__":
     main()
+
+
+
 
 
