@@ -4,11 +4,12 @@ Guía para que cualquier persona pueda ejecutar el pipeline y levantar el dashbo
 
 > Directorio de trabajo esperado: la raíz del repo `proyecto_analisis_datos/`.
 
+
 ---
 
 ## 1) Prerrequisitos
 - Python 3.x
-- Acceso a red local (solo si se ejecutan servicios locales; en este proyecto el origen 3 es local)
+- Acceso a red local 
 
 ---
 
@@ -29,14 +30,7 @@ El proyecto genera artefactos en:
 - `docs/`
 - `repo/`
 
-### 3.1) Levantar Origen 3 (API REST local)
-En una terminal:
-```bash
-python api/local_source.py
-```
-- Puerto: **8000**
-
-### 3.2) Ejecutar pipeline
+### 3.1) Ejecutar pipeline
 En otra terminal (sin detener la anterior):
 ```bash
 python etl/pipeline_sprint2.py
@@ -45,9 +39,6 @@ python etl/train_kmeans_sprint4.py
 python etl/train_kmeans_sprint5.py
 python etl/profile_clusters_sprint6.py
 ```
-
-### 3.3) Apagar origen 3
-Cuando termine el pipeline, detén `python api/local_source.py`.
 
 ---
 
@@ -104,3 +95,7 @@ Revisa:
 - \.venv\Scripts\Activate.ps1
 - python api/results_api.py
 - python -m streamlit run dashboards/streamlit_sprint7_app.py
+
+---
+
+> Nota: Para despliegue local (sin Docker) y con Docker Compose, ver `docs/guia_despliegue.md`. Para uso de UI/API por parte de usuarios, ver `docs/manual_usuario.md`.

@@ -5,7 +5,7 @@ Este documento describe el objetivo y la intención del pipeline ETL para E3 (se
 ## Fuentes (mínimo 3)
 1. `data/usuarios_streaming.csv` (CSV)
 2. `data/perfil_usuarios.csv` (CSV; carga a Postgres en sprints siguientes)
-3. **API REST local** (3er origen para cumplir el requisito del enunciado)
+3. **Fuente adicional eliminada** (histórico; el origen 3 fue eliminado)
 
 ## Objetivo del dataset consolidado
 - Construir un dataset final persistido en `/data/`.
@@ -20,4 +20,3 @@ Este documento describe el objetivo y la intención del pipeline ETL para E3 (se
 - `etl/config.py`: configuración via variables de entorno.
 
 > En Sprint 1 se deja la base documentada; la implementación completa del ETL end-to-end se completará en sprints posteriores.
-

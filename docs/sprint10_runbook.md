@@ -33,10 +33,8 @@ python etl/profile_clusters_sprint6.py
 ```
 
 
-## 3) Detener origen 3
-Cuando termine el pipeline, apagar el proceso de la terminal 1.
+## 3) API REST de resultados (segmentos y métricas)
 
-## 4) API REST de resultados (segmentos y métricas)
 En una terminal:
 ```bash
 python api/results_api.py
@@ -49,6 +47,7 @@ python api/results_api.py
 curl http://localhost:8000/v1/clusters
 curl http://localhost:8000/v1/clusters/0
 curl "http://localhost:8000/v1/metrics?cluster_id=0&stat=mean"
+
 ```
 
 ## 6) Evidencia de k óptimo (Elbow + Silhouette)
