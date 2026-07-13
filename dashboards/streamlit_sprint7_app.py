@@ -386,10 +386,10 @@ def main() -> None:
     # Aprendizaje supervisado (Sprint 12/13)
     # ==============================
     st.divider()
-    st.subheader("Aprendizaje supervisado (Sprint 12/13)")
+    st.subheader("Aprendizaje supervisado")
     
     # Dataset (Sprint 12)
-    st.markdown("### Sprint 12 — Dataset supervisado")
+    st.markdown("### Dataset supervisado")
     sprint12_report_path = DOCS_DIR / "sprint12_supervised_dataset_report.json"
     if sprint12_report_path.exists():
         sprint12_report = load_metrics_json(sprint12_report_path)  # reutiliza loader JSON
@@ -415,7 +415,7 @@ def main() -> None:
         st.info("No se encontró docs/sprint12_supervised_dataset_report.json")
 
     # Modelos (Sprint 13)
-    st.markdown("### Sprint 13 — Modelos supervisados")
+    st.markdown("### Modelos supervisados")
     sprint13_report_path = DOCS_DIR / "sprint13_supervised_train_report.json"
     if sprint13_report_path.exists():
         sprint13_report = load_metrics_json(sprint13_report_path)
@@ -439,7 +439,7 @@ def main() -> None:
             if cm_png and Path(cm_png).exists():
                 st.image(str(cm_png), use_container_width=True, caption="Matriz de confusión (PNG)")
 
-            # Confusion matrix tabla
+            # Confusion matrix (tabla + heatmap normalizado)
             cm_obj = model_obj.get("confusion_matrix")
             labels = None
             if isinstance(cm_obj, dict):
@@ -451,8 +451,43 @@ def main() -> None:
             if isinstance(cm, list) and cm and isinstance(cm[0], list):
                 if labels is None:
                     labels = list(range(len(cm)))
-                cm_df = pd.DataFrame(cm, index=[str(x) for x in labels], columns=[str(x) for x in labels])
+
+                cm_df = pd.DataFrame(
+                    cm,
+                    index=[str(x) for x in labels],
+                    columns=[str(x) for x in labels],
+                )
+
+                st.markdown("#### Matriz de confusión (tabla)")
                 st.dataframe(cm_df, use_container_width=True)
+
+                # Normalización por fila (recall por clase)
+                row_sums = cm_df.sum(axis=1).replace(0, 1)
+                cm_norm = cm_df.div(row_sums, axis=0)
+
+                st.markdown("#### Matriz de confusión (heatmap normalizado por fila)")
+                import matplotlib.pyplot as plt
+                import numpy as np
+
+                fig, ax = plt.subplots(figsize=(6.5, 5.5))
+                im = ax.imshow(cm_norm.values, cmap="Blues", aspect="auto", vmin=0.0, vmax=1.0)
+                ax.set_xticks(range(len(cm_norm.columns)))
+                ax.set_yticks(range(len(cm_norm.index)))
+                ax.set_xticklabels(cm_norm.columns.tolist())
+                ax.set_yticklabels(cm_norm.index.tolist())
+                ax.set_xlabel("Clase predicha")
+                ax.set_ylabel("Clase real")
+                ax.set_title("Confusion matrix (normalizada por fila)")
+
+                # anotaciones con 2 decimales
+                for i in range(len(cm_norm.index)):
+                    for j in range(len(cm_norm.columns)):
+                        val = cm_norm.iat[i, j]
+                        ax.text(j, i, f"{val:.2f}", ha="center", va="center", color="black")
+
+                fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+                st.pyplot(fig, use_container_width=True)
+
 
     else:
         st.info("No se encontró docs/sprint13_supervised_train_report.json")
